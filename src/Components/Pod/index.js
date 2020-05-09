@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import { Body, CardContainer, TitleHeader } from "./styles";
-import "./styles.css";
+import { Body, CardContainer, TitleHeader, CardFont } from "./styles";
+import "./styles.scss";
 
 const PodCard = (props) => {
   const { title, url, hdurl, explanation, date, copyright } = props.data;
@@ -19,7 +19,7 @@ const PodCard = (props) => {
                 </a>
                 <Card.Body>
                   <Card.Text>
-                    {date} @{copyright}
+                    <CardFont>{date} @{copyright}</CardFont>
                   </Card.Text>
                   <Card.Text>{explanation}</Card.Text>
                   <Button variant="primary" onClick={props.redirect}>

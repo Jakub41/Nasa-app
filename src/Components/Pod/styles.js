@@ -3,7 +3,7 @@ import { css } from "@emotion/core";
 import { Button, Card } from "react-bootstrap";
 // import NasaFont from "../../Assets/Fonts/Nasa/Nasa.ttf";
 
-const Body = styled.body({
+const Body = styled.div({
   backgroundColor: "#000",
 });
 
@@ -17,11 +17,15 @@ const CardContainer = styled(Card)({
   width: 100 + "%",
   border: "#000",
   marginTop: 20,
-  marginBottom: 20
+  marginBottom: 20,
 });
 
 const Image = css`
   height: 800px;
-`
+`;
+const CardFont = styled.text({
+  fontFamily: "Space Mono",
+  fontSize: 1.5 + "em",
+});
 
-export { Body, CardContainer, TitleHeader, Image };
+export { Body, CardContainer, TitleHeader, Image, CardFont };

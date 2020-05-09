@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect, withRouter } from "react-router-dom";
 import { getPod } from "../../API";
 import PodCard from "../../Components/Pod";
+import Loader from "../../Components/Loader";
 
 export default class Main extends Component {
   constructor(props) {
@@ -17,9 +18,13 @@ export default class Main extends Component {
 
   componentDidMount = async () => {
     const podData = await getPod();
+
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 3000);
+
     this.setState({
       isFetching: true,
-      isLoading: false,
       podData: podData,
     });
     console.log("POD State >> ", this.state.podData);
@@ -31,13 +36,12 @@ export default class Main extends Component {
 
   render() {
     const { podData, isLoading, redirecting } = this.state;
-
     return redirecting ? (
       <Redirect to="/home" />
     ) : isLoading ? (
-      <h1>LOADING...</h1>
+      <Loader />
     ) : (
-        <PodCard data={podData} redirect={this.redirectToHome}></PodCard>
+      <PodCard data={podData} redirect={this.redirectToHome}></PodCard>
     );
   }
 }

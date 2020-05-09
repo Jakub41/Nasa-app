@@ -1,0 +1,6 @@
+.card-img-top {
+  height: 800px;
+  @media (max-width: 768px) {
+    height: auto;
+  }
+}
