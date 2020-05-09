@@ -1,15 +1,10 @@
 import React from "react";
-import History from "../../Util/History";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { Body, CardContainer, TitleHeader } from "./styles";
+import "./styles.css";
 
 const PodCard = (props) => {
   const { title, url, hdurl, explanation, date, copyright } = props.data;
-
-  const routeChange = () => {
-    let path = "/home";
-    History.push(path);
-  };
 
   return (
     <>
@@ -19,14 +14,15 @@ const PodCard = (props) => {
             <Col>
               <CardContainer>
                 <TitleHeader>{title}</TitleHeader>
-                <Card.Img variant="top" src={url} alt={title} />
+                <a href={hdurl} target="_blank" rel="noopener noreferrer">
+                  <Card.Img variant="top" src={url} alt={title} />
+                </a>
                 <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    {date} @{copyright}
                   </Card.Text>
-                  <Button onClick={routeChange} variant="primary">
+                  <Card.Text>{explanation}</Card.Text>
+                  <Button variant="primary" onClick={props.redirect}>
                     Enter
                   </Button>
                 </Card.Body>
