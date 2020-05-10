@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 import { getPod } from "../../API";
 import PodCard from "../../Components/Pod";
 import Loader from "../../Components/Loader";
@@ -8,13 +9,21 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      podData: [],
+      podData: {},
       isFetching: false,
       isLoading: true,
       error: null,
       redirecting: false,
     };
   }
+
+  static defaultProps = {
+    podData: {},
+  };
+
+  static propsTypes = {
+    podData: PropTypes.object.isRequired,
+  };
 
   componentDidMount = async () => {
     const podData = await getPod();
@@ -45,3 +54,11 @@ export default class Main extends Component {
     );
   }
 }
+
+Main.defaultProps = {
+  podData: {},
+};
+
+Main.propTypes = {
+  podData: PropTypes.object.isRequired,
+};

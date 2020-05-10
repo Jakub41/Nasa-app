@@ -6,9 +6,10 @@ import {
   TitleHeader,
   CardFontTop,
   CardFontBodyText,
-  ButtonText
+  ButtonText,
 } from "./styles";
 import "./styles.scss";
+import PropTypes from "prop-types";
 
 const PodCard = (props) => {
   const { title, url, hdurl, explanation, date, copyright } = props.data;
@@ -47,3 +48,14 @@ const PodCard = (props) => {
 };
 
 export default PodCard;
+
+PodCard.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    hdurl: PropTypes.string.isRequired,
+    explanation: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    copyright: PropTypes.string.isRequired,
+  }),
+};
