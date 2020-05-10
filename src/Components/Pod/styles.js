@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 // import NasaFont from "../../Assets/Fonts/Nasa/Nasa.ttf";
 
 const Body = styled.div({
@@ -24,17 +24,17 @@ const Image = css`
   height: 800px;
 `;
 
-const CardFontTopText = styled.text({
+const CardFontTop = styled.span({
   fontFamily: "Space Mono",
   fontSize: 1.5 + "em",
 });
 
-const CardFontBodyText = styled.text({
+const CardFontBodyText = styled.span({
   fontFamily: "Baloo",
   fontSize: 1 + "em",
 });
 
-const ButtonText = styled.text({
+const ButtonText = styled.span({
   fontFamily: "Exo",
   fontSize: 1 + "em",
   textTransform: "uppercase"
@@ -45,7 +45,7 @@ export {
   CardContainer,
   TitleHeader,
   Image,
-  CardFontTopText,
+  CardFontTop,
   CardFontBodyText,
   ButtonText,
 };

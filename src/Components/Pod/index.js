@@ -4,7 +4,7 @@ import {
   Body,
   CardContainer,
   TitleHeader,
-  CardFontTopText,
+  CardFontTop,
   CardFontBodyText,
   ButtonText
 } from "./styles";
@@ -26,9 +26,9 @@ const PodCard = (props) => {
                 </a>
                 <Card.Body>
                   <Card.Text>
-                    <CardFontTopText>
+                    <CardFontTop>
                       {date} @{copyright}
-                    </CardFontTopText>
+                    </CardFontTop>
                   </Card.Text>
                   <Card.Text>
                     <CardFontBodyText>{explanation}</CardFontBodyText>
