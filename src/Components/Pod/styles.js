@@ -23,9 +23,29 @@ const CardContainer = styled(Card)({
 const Image = css`
   height: 800px;
 `;
-const CardFont = styled.text({
+
+const CardFontTopText = styled.text({
   fontFamily: "Space Mono",
   fontSize: 1.5 + "em",
 });
 
-export { Body, CardContainer, TitleHeader, Image, CardFont };
+const CardFontBodyText = styled.text({
+  fontFamily: "Baloo",
+  fontSize: 1 + "em",
+});
+
+const ButtonText = styled.text({
+  fontFamily: "Exo",
+  fontSize: 1 + "em",
+  textTransform: "uppercase"
+});
+
+export {
+  Body,
+  CardContainer,
+  TitleHeader,
+  Image,
+  CardFontTopText,
+  CardFontBodyText,
+  ButtonText,
+};

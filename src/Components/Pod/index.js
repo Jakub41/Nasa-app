@@ -1,6 +1,13 @@
 import React from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import { Body, CardContainer, TitleHeader, CardFont } from "./styles";
+import {
+  Body,
+  CardContainer,
+  TitleHeader,
+  CardFontTopText,
+  CardFontBodyText,
+  ButtonText
+} from "./styles";
 import "./styles.scss";
 
 const PodCard = (props) => {
@@ -19,11 +26,15 @@ const PodCard = (props) => {
                 </a>
                 <Card.Body>
                   <Card.Text>
-                    <CardFont>{date} @{copyright}</CardFont>
+                    <CardFontTopText>
+                      {date} @{copyright}
+                    </CardFontTopText>
                   </Card.Text>
-                  <Card.Text>{explanation}</Card.Text>
-                  <Button variant="primary" onClick={props.redirect}>
-                    Enter
+                  <Card.Text>
+                    <CardFontBodyText>{explanation}</CardFontBodyText>
+                  </Card.Text>
+                  <Button variant="success" onClick={props.redirect}>
+                    <ButtonText>Enter</ButtonText>
                   </Button>
                 </Card.Body>
               </CardContainer>
