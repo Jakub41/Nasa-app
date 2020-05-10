@@ -21,7 +21,7 @@ export default class Main extends Component {
 
     setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 3000);
+    }, 30000000);
 
     this.setState({
       isFetching: true,
