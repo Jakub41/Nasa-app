@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import WeatherMars from "../../Components/Mars/Weather";
 
 export default class Home extends Component {
   constructor(props) {
@@ -14,8 +15,8 @@ export default class Home extends Component {
   render() {
     return (
       <>
-
+        <WeatherMars />
       </>
-    )
+    );
   }
 }
