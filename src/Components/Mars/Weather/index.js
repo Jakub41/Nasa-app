@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "emotion-theming";
-import "./styles";
+import "./styles.scss";
 import {
   Theme,
   MarsWeatherContainer,
@@ -29,6 +29,7 @@ import {
   PreviousWeatherDate,
   MoreInfoButton,
 } from "./styles";
+import { IconContext } from "react-icons";
 import { RiCelsiusLine, RiFahrenheitLine } from "react-icons/ri";
 
 const WeatherMars = (props) => {
@@ -73,24 +74,26 @@ const WeatherMars = (props) => {
             </Info>
 
             <Unit>
-              <UnitLabel htmlFor="cel">
-                <RiCelsiusLine />
-              </UnitLabel>
-              <UnitInputRadio
-                type="radio"
-                id="cel"
-                name="unit"
-                defaultChecked
-              ></UnitInputRadio>
-              <UnitToggleButton className="unit__toggle"></UnitToggleButton>
-              <UnitLabel htmlFor="fah">
-                <RiFahrenheitLine />
-              </UnitLabel>
-              <UnitInputRadio
-                type="radio"
-                id="fah"
-                name="unit"
-              ></UnitInputRadio>
+              <IconContext.Provider value={{ className: "unit-icons" }}>
+                <UnitLabel cel htmlFor="cel">
+                  <RiCelsiusLine />
+                </UnitLabel>
+                <UnitInputRadio
+                  type="radio"
+                  id="cel"
+                  name="unit"
+                  defaultChecked
+                ></UnitInputRadio>
+                <UnitToggleButton className="unit__toggle"></UnitToggleButton>
+                <UnitLabel fah htmlFor="fah">
+                  <RiFahrenheitLine />
+                </UnitLabel>
+                <UnitInputRadio
+                  type="radio"
+                  id="fah"
+                  name="unit"
+                ></UnitInputRadio>
+              </IconContext.Provider>
             </Unit>
           </MainCurrentWeather>
 

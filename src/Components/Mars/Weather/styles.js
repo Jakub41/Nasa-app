@@ -143,18 +143,60 @@ const Info = Styled.div({
 /**   Unit */
 const Unit = Styled.div({
   gridColumn: 3 + "/" + 4,
+  placeSelf: "end",
+  color: `${Theme.colors.light}`,
+  display: "flex",
+  gap: ".5em",
+  opacity: ".7",
+  transition:"opacity 275ms linear",
+  ":hover":{
+    opacity: 1,
+  }
 });
 
-const UnitLabel = Styled.label({});
+const UnitLabel = Styled.label`
+  cursor: pointer;
+  margin-right: ${props => props.cel && "1em"};
+  margin-left: ${props => props.fah && "1em"};
+  font-size: 20px;
+`;
 
-const UnitInputRadio = Styled.input({});
+const UnitInputRadio = Styled.input`
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+`;
 
-const UnitToggleButton = Styled.button({});
+const UnitToggleButton = Styled.button`
+  cursor: pointer;
+  width: 4em;
+  border: 2px solid ${Theme.colors.light};
+  background: transparent;
+  padding: 0;
+  border-radius: 100vmax;
+  &::after {
+    content: "";
+    display: block;
+    background: ${Theme.colors.light};
+    border-radius: 50%;
+    height: 1rem;
+    margin: 3px;
+    margin-left: auto;
+    width: 1rem;
+  }
+`;
 
 /** Previous Weather */
 const PreviousWeather = Styled.div({});
 
-const PreviousWeatherLabel = Styled.label({});
+const PreviousWeatherLabel = Styled.label`
+
+`;
 
 const PreviousWeatherTitle = Styled.h2`
   line-height: ${Theme.typography.lineHeight};
