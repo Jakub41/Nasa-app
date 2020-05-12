@@ -3,6 +3,7 @@ import { ThemeProvider } from "emotion-theming";
 import "./styles";
 import {
   Theme,
+  MarsWeatherContainer,
   MainCurrentWeather,
   MainTitle,
   PreviousWeather,
@@ -28,73 +29,88 @@ import {
   PreviousWeatherDate,
   MoreInfoButton,
 } from "./styles";
+import { RiCelsiusLine, RiFahrenheitLine } from "react-icons/ri";
 
 const WeatherMars = (props) => {
   return (
     <>
       <ThemeProvider theme={Theme}>
-        <MainCurrentWeather>
-          <MainTitle>Discover the Mars weather today</MainTitle>
-          <Date>
-            <SectionTitle date>Sol 100</SectionTitle>
-            <ParagraphDate>September 11</ParagraphDate>
-          </Date>
-          <Temp>
-            <SectionTitle>Temperature</SectionTitle>
-            <Paragraph>High: -20</Paragraph>
-            <Paragraph>Low: -120</Paragraph>
-          </Temp>
-          <Wind>
-            <SectionTitle>Wind</SectionTitle>
-            <Paragraph>75 kph</Paragraph>
-            <WindDirection>
-              <WindParagraph className="sr-only">45deg</WindParagraph>
-              <WindArrow></WindArrow>
-            </WindDirection>
-          </Wind>
-          <Info>
-            <Paragraph>
-              The Interior Exploration using Seismic Investigations, Geodesy and
-              Heat Transport mission is a robotic lander designed to study the
-              deep interior of the planet Mars
-            </Paragraph>
-            <Paragraph>
-              The Interior Exploration using Seismic Investigations, Geodesy and
-              Heat Transport mission is a robotic lander designed to study the
-              deep interior of the planet Mars
-            </Paragraph>
-          </Info>
+        <MarsWeatherContainer>
+          <MainCurrentWeather>
+            <MainTitle>Discover the Mars weather today</MainTitle>
+            <Date>
+              <SectionTitle date>Sol 100</SectionTitle>
+              <ParagraphDate>September 11</ParagraphDate>
+            </Date>
+            <Temp>
+              <SectionTitle>Temperature</SectionTitle>
+              <Paragraph reading>High: -20</Paragraph>
+              <Paragraph reading>Low: -120</Paragraph>
+            </Temp>
+            <Wind>
+              <SectionTitle wind>Wind</SectionTitle>
+              <Paragraph reading wind>
+                75 kph
+              </Paragraph>
+              <WindDirection>
+                <WindParagraph className="sr-only">45deg</WindParagraph>
+                <WindArrow>
+                  {/** Arrow will move based on the API values props */}
+                </WindArrow>
+              </WindDirection>
+            </Wind>
+            <Info>
+              <Paragraph>
+                The Interior Exploration using Seismic Investigations, Geodesy
+                and Heat Transport mission is a robotic lander designed to study
+                the deep interior of the planet Mars
+              </Paragraph>
+              <Paragraph>
+                The Interior Exploration using Seismic Investigations, Geodesy
+                and Heat Transport mission is a robotic lander designed to study
+                the deep interior of the planet Mars
+              </Paragraph>
+            </Info>
 
-          <Unit>
-            <UnitLabel for="cel">C</UnitLabel>
-            <UnitInputRadio
-              type="radio"
-              id="cel"
-              name="unit"
-              checked
-            ></UnitInputRadio>
-            <UnitToggleButton className="unit__toggle"></UnitToggleButton>
-            <UnitLabel for="fah">F</UnitLabel>
-            <UnitInputRadio type="radio" id="fah" name="unit"></UnitInputRadio>
-          </Unit>
-        </MainCurrentWeather>
+            <Unit>
+              <UnitLabel htmlFor="cel">
+                <RiCelsiusLine />
+              </UnitLabel>
+              <UnitInputRadio
+                type="radio"
+                id="cel"
+                name="unit"
+                defaultChecked
+              ></UnitInputRadio>
+              <UnitToggleButton className="unit__toggle"></UnitToggleButton>
+              <UnitLabel htmlFor="fah">
+                <RiFahrenheitLine />
+              </UnitLabel>
+              <UnitInputRadio
+                type="radio"
+                id="fah"
+                name="unit"
+              ></UnitInputRadio>
+            </Unit>
+          </MainCurrentWeather>
 
-        <PreviousWeather>
-          <PreviousWeatherLabel for="weather-toggle">
-            <span className="sr-only">Show previous weather</span>
-          </PreviousWeatherLabel>
-          <PreviousWeatherTitle>Previous 7 days</PreviousWeatherTitle>
+          <PreviousWeather>
+            <PreviousWeatherLabel htmlFor="weather-toggle">
+              <span className="sr-only">Show previous weather</span>
+            </PreviousWeatherLabel>
+            <PreviousWeatherTitle>Previous 7 days</PreviousWeatherTitle>
 
-          <PreviousWeatherDays>
-            <PreviousWeatherDay>
-              <PreviousWeatherSol>Sol 555</PreviousWeatherSol>
-              <PreviousWeatherDate>September 31</PreviousWeatherDate>
-              <Paragraph>High: -20</Paragraph>
-              <Paragraph>Low: -120</Paragraph>
-              <MoreInfoButton className="more-info">more info</MoreInfoButton>
-            </PreviousWeatherDay>
-          </PreviousWeatherDays>
-        </PreviousWeather>
+            <PreviousWeatherDays>
+              <PreviousWeatherDay>
+                <PreviousWeatherSol>Sol 555</PreviousWeatherSol>
+                <PreviousWeatherDate>September 31</PreviousWeatherDate>
+                <Paragraph>High: -20</Paragraph>
+                <Paragraph>Low: -120</Paragraph>
+                <MoreInfoButton className="more-info">more info</MoreInfoButton>
+              </PreviousWeatherDay>
+            </PreviousWeatherDays>
+          </PreviousWeather>
+        </MarsWeatherContainer>
       </ThemeProvider>
     </>
   );

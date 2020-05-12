@@ -13,8 +13,8 @@ function App() {
       <Global styles={Styles} />
       <Container>
         <Navbar />
-        <Route path="/home" component={Home} exact />
       </Container>
+      <Route path="/home" component={Home} exact />
     </>
   );
 }
