@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import WeatherMars from "../../Components/Mars/Weather";
 import { MarsWeatherData } from "../../API/MarsWeatherData";
+import MarsLoader from "../../Components/MarsLoader";
 
 export default class Home extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export default class Home extends Component {
 
     setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 3000);
+    }, 10500);
 
     this.setState({
       wMarsData: data,
@@ -33,6 +34,6 @@ export default class Home extends Component {
 
   render() {
     const { wMarsData, isLoading, selectedSol } = this.state;
-    return <>{isLoading ? <h1>LOADING...</h1> : <WeatherMars sol={wMarsData[selectedSol]} />}</>;
+    return <>{isLoading ? <MarsLoader /> : <WeatherMars sol={wMarsData[selectedSol]} />}</>;
   }
 }
