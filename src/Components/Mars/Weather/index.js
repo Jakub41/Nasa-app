@@ -22,6 +22,7 @@ import {
   UnitInputRadio,
   UnitToggleButton,
   PreviousWeatherLabel,
+  PreviousWeatherButton,
   PreviousWeatherTitle,
   PreviousWeatherSol,
   PreviousWeatherDays,
@@ -31,6 +32,8 @@ import {
 } from "./styles";
 import { IconContext } from "react-icons";
 import { RiCelsiusLine, RiFahrenheitLine } from "react-icons/ri";
+import { WiCloudUp } from "react-icons/wi";
+import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 
 const WeatherMars = (props) => {
   return (
@@ -45,8 +48,8 @@ const WeatherMars = (props) => {
             </Date>
             <Temp>
               <SectionTitle>Temperature</SectionTitle>
-              <Paragraph reading>High: -20</Paragraph>
-              <Paragraph reading>Low: -120</Paragraph>
+              <Paragraph reading><FaTemperatureHigh/> -20</Paragraph>
+              <Paragraph reading><FaTemperatureLow /> -120</Paragraph>
             </Temp>
             <Wind>
               <SectionTitle wind>Wind</SectionTitle>
@@ -97,10 +100,16 @@ const WeatherMars = (props) => {
             </Unit>
           </MainCurrentWeather>
 
-          <PreviousWeather>
+          <PreviousWeather className="prev-weather">
             <PreviousWeatherLabel htmlFor="weather-toggle">
               <span className="sr-only">Show previous weather</span>
             </PreviousWeatherLabel>
+
+            <PreviousWeatherButton className="show-prev-weather" htmlFor="weather-toggle">
+              <WiCloudUp />
+              <span className="sr-only">Show previous weather</span>
+            </PreviousWeatherButton>
+
             <PreviousWeatherTitle>Previous 7 days</PreviousWeatherTitle>
 
             <PreviousWeatherDays>

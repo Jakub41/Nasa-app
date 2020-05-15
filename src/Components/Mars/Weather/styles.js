@@ -53,7 +53,7 @@ const MainCurrentWeather = Styled.main`
   background: ${rgba(Theme.colors.black, Theme.alpha)};
   padding: 2em;
   max-width: 1000px;
-  margin: 4em 0 0 4em;
+  margin: 4em auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2em;
@@ -148,16 +148,16 @@ const Unit = Styled.div({
   display: "flex",
   gap: ".5em",
   opacity: ".7",
-  transition:"opacity 275ms linear",
-  ":hover":{
+  transition: "opacity 275ms linear",
+  ":hover": {
     opacity: 1,
-  }
+  },
 });
 
 const UnitLabel = Styled.label`
   cursor: pointer;
-  margin-right: ${props => props.cel && "1em"};
-  margin-left: ${props => props.fah && "1em"};
+  margin-right: ${(props) => props.cel && "1em"};
+  margin-left: ${(props) => props.fah && "1em"};
   font-size: 20px;
 `;
 
@@ -192,17 +192,57 @@ const UnitToggleButton = Styled.button`
 `;
 
 /** Previous Weather */
-const PreviousWeather = Styled.div({});
+const PreviousWeather = Styled.div`
+  background: ${Theme.colors.light};
+  color: ${Theme.colors.dark};
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(60%);
+  transition: transform 350ms ease;
+  padding: 3rem;
+`;
 
 const PreviousWeatherLabel = Styled.label`
+`;
 
+const PreviousWeatherButton = Styled.button`
+  position: absolute;
+  background: ${Theme.colors.light};
+  left: 50%;
+  width: 10rem;
+  transform: translate(-50%, calc(-100% - 3rem));
+  text-align: center;
+  font-size: ${Theme.fontSize.h2};
+  line-height: 1;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  border: 0;
+  color: ${Theme.colors.gray};
+  font-family: inherit;
+
+  &:hover,
+  &:focus {
+    color: ${Theme.colors.dark};
+  }
+
+  .cloud-icon {
+    display: block;
+    transform: rotate(0);
+    transition: transform 300ms ease;
+  }
 `;
 
 const PreviousWeatherTitle = Styled.h2`
   line-height: ${Theme.typography.lineHeight};
+  color: ${Theme.colors.accent};
+  font-size: ${Theme.fontSize.h2};
+  text-align: center;
 `;
 
-const PreviousWeatherDays = Styled.div({});
+const PreviousWeatherDays = Styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const PreviousWeatherDay = Styled.div({});
 
@@ -210,9 +250,24 @@ const PreviousWeatherSol = Styled.h3`
   line-height: ${Theme.typography.lineHeight};
 `;
 
-const PreviousWeatherDate = Styled.p({});
+const PreviousWeatherDate = Styled.p`
+  font-size: .9rem;
+  color: ${Theme.colors.gray};
+`;
 
-const MoreInfoButton = Styled.button({});
+const MoreInfoButton = Styled.button`
+  border: 0;
+  border-radius: 100vmax;
+  background: ${Theme.colors.dark};
+  color: ${Theme.colors.light};
+  text-transform: uppercase;
+  padding: .3em .1em;
+  margin-top: 1em;
+
+  :hover,:focus {
+    background: ${Theme.colors.gray};
+  }
+`;
 
 export {
   Theme,
@@ -235,6 +290,7 @@ export {
   UnitInputRadio,
   UnitToggleButton,
   PreviousWeatherLabel,
+  PreviousWeatherButton,
   PreviousWeatherTitle,
   PreviousWeatherSol,
   PreviousWeatherDays,
