@@ -36,6 +36,17 @@ import { WiCloudUp } from "react-icons/wi";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 
 const WeatherMars = (props) => {
+  console.log("Weather Props >> ", props);
+  console.log("SOL", props.sol);
+  const {
+    date,
+    maxTemp,
+    minTemp,
+    sol,
+    windDirectionDegrees,
+    windSpeed,
+  } = props.sol;
+
   return (
     <>
       <ThemeProvider theme={Theme}>
@@ -43,13 +54,17 @@ const WeatherMars = (props) => {
           <MainCurrentWeather>
             <MainTitle>Discover the Mars weather today</MainTitle>
             <Date>
-              <SectionTitle date>Sol 100</SectionTitle>
-              <ParagraphDate>September 11</ParagraphDate>
+              <SectionTitle date>Sol {sol}</SectionTitle>
+              <ParagraphDate>{date}</ParagraphDate>
             </Date>
             <Temp>
               <SectionTitle>Temperature</SectionTitle>
-              <Paragraph reading><FaTemperatureHigh/> -20</Paragraph>
-              <Paragraph reading><FaTemperatureLow /> -120</Paragraph>
+              <Paragraph reading>
+                <FaTemperatureHigh /> -20
+              </Paragraph>
+              <Paragraph reading>
+                <FaTemperatureLow /> -120
+              </Paragraph>
             </Temp>
             <Wind>
               <SectionTitle wind>Wind</SectionTitle>
@@ -105,7 +120,10 @@ const WeatherMars = (props) => {
               <span className="sr-only">Show previous weather</span>
             </PreviousWeatherLabel>
 
-            <PreviousWeatherButton className="show-prev-weather" htmlFor="weather-toggle">
+            <PreviousWeatherButton
+              className="show-prev-weather"
+              htmlFor="weather-toggle"
+            >
               <WiCloudUp />
               <span className="sr-only">Show previous weather</span>
             </PreviousWeatherButton>

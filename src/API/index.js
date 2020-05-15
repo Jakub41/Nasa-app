@@ -11,5 +11,5 @@ export const getWeatherMars = NasaApiQuery(() => {
   return `${W_MARS_URL}`;
 });
 
-console.log("POD >> ", getPod());
+// console.log("POD >> ", getPod());
 console.log("Mars Weather >> ", getWeatherMars());
