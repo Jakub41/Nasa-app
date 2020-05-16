@@ -37,22 +37,20 @@ export default class Main extends Component {
       isFetching: true,
       podData: podData,
     });
-
-    console.log("POD State >> ", this.state.podData);
   };
 
-  redirectToHome = (e) => {
+  redirectToMarsWeather = (e) => {
     this.setState({ redirecting: true });
   };
 
   render() {
     const { podData, isLoading, redirecting } = this.state;
     return redirecting ? (
-      <Redirect to="/home" />
+      <Redirect to="/mars-weather" />
     ) : isLoading ? (
       <Loader />
     ) : (
-      <PodCard data={podData} redirect={this.redirectToHome}></PodCard>
+      <PodCard data={podData} redirect={this.redirectToMarsWeather}></PodCard>
     );
   }
 }
