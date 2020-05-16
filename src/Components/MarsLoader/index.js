@@ -23,7 +23,13 @@ const MarsLoader = () => {
           <div className="crater3"></div>
         </div>
       </div>
-      <div className="test"></div>
+      <div className="formLoader">
+        <ul className="formLoading">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </div>
   );
 };
