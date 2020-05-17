@@ -2,6 +2,9 @@ import React from "react";
 import { ErrorContainer } from "./styles";
 
 const NotifyError = () => {
+  const refreshPage = () => {
+    window.location.reload(false);
+  }
   return (
       <ErrorContainer>
         <div id="error-box">
@@ -281,7 +284,7 @@ const NotifyError = () => {
             <p>oh no, something went wrong.</p>
             <p>refresh or come back later</p>
           </div>
-          <button className="button-box">
+          <button onClick={refreshPage} className="button-box">
             <h1 className="red">Refresh</h1>
           </button>
         </div>
