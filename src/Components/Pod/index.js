@@ -9,6 +9,8 @@ import {
   ButtonText,
 } from "./styles";
 import PropTypes from "prop-types";
+import { IconContext } from "react-icons";
+import { FaRegCopyright } from "react-icons/fa";
 
 const PodCard = (props) => {
   const { title, url, hdurl, explanation, date, copyright } = props.data;
@@ -27,7 +29,13 @@ const PodCard = (props) => {
                 <Card.Body>
                   <Card.Text>
                     <CardFontTop>
-                      {date} @{copyright}
+                      <IconContext.Provider
+                        value={{
+                          color: "#0B3E92",
+                        }}
+                      >
+                        {date} <FaRegCopyright /> {copyright}
+                      </IconContext.Provider>
                     </CardFontTop>
                   </Card.Text>
                   <Card.Text>

@@ -11,6 +11,8 @@ const TitleHeader = styled(Card.Header)`
   font-family: Nasa;
   font-size: 2rem;
   text-align: center;
+  letter-spacing: 0.5rem;
+  color: #0B3E92;
 `;
 
 const CardContainer = styled(Card)`
