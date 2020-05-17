@@ -52,6 +52,9 @@ export const ErrorContainer = Styled.div`
     background: linear-gradient(to bottom left, ${Theme.clr.error} 40%, ${Theme.clr.orange} 100%);
     border-radius: 20px;
     box-shadow: 5px 5px 20px rgba(${Theme.clr.gray}, 10%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .message {
