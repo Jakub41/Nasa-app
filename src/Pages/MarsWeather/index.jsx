@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import WeatherMars from "../../Components/Mars/Weather";
+import PropTypes from "prop-types";
+import WeatherMars from "../../Components/Mars";
 import { MarsWeatherData } from "../../API/MarsWeatherData";
 import MarsLoader from "../../Components/MarsLoader";
 
-export default class Home extends Component {
+export default class WeatherMarsIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
       wMarsData: [],
       selectedSol: "",
+      isMetric: true,
+      isPrevious: false,
       isFetching: false,
       isLoading: true,
       error: null,
@@ -33,7 +36,40 @@ export default class Home extends Component {
   };
 
   render() {
-    const { wMarsData, isLoading, selectedSol } = this.state;
-    return <>{isLoading ? <MarsLoader /> : <WeatherMars sol={wMarsData[selectedSol]} />}</>;
+    const {
+      wMarsData,
+      isLoading,
+      selectedSol,
+      isMetric,
+      isPrevious,
+    } = this.state;
+    return (
+      <>
+        {isLoading ? (
+          <MarsLoader />
+        ) : (
+          <WeatherMars
+            sol={wMarsData[selectedSol]}
+            weather={wMarsData}
+            metric={isMetric}
+            prev={isPrevious}
+          />
+        )}
+      </>
+    );
   }
 }
+
+WeatherMarsIndex.defaultProps = {
+  wMarsData: [],
+  selectedSol: "",
+  isMetric: true,
+  isPrevious: false,
+};
+
+WeatherMarsIndex.propTypes = {
+  wMarsData: PropTypes.array.isRequired,
+  selectedSol: PropTypes.string.isRequired,
+  isMetric: PropTypes.bool.isRequired,
+  isPrevious: PropTypes.bool.isRequired,
+};
