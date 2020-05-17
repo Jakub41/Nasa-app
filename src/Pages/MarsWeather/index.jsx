@@ -78,6 +78,9 @@ WeatherMarsIndex.defaultProps = {
   selectedSol: "",
   isMetric: true,
   isPrevious: false,
+  isFetching: false,
+  isLoading: true,
+  error: false,
 };
 
 WeatherMarsIndex.propTypes = {
@@ -85,4 +88,7 @@ WeatherMarsIndex.propTypes = {
   selectedSol: PropTypes.string.isRequired,
   isMetric: PropTypes.bool.isRequired,
   isPrevious: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
 };

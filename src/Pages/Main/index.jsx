@@ -69,8 +69,16 @@ export default class Main extends Component {
 
 Main.defaultProps = {
   podData: {},
+  isFetching: false,
+  isLoading: true,
+  error: false,
+  redirecting: false,
 };
 
 Main.propTypes = {
   podData: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  redirecting: PropTypes.bool.isRequired,
 };
