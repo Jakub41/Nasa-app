@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import WeatherMars from "../../Components/Mars";
 import { MarsWeatherData } from "../../API/MarsWeatherData";
 import MarsLoader from "../../Components/MarsLoader";
-import NotifyError from "../../Util";
+import NotifyError from "../../Util/Error";
 
 export default class WeatherMarsIndex extends Component {
   constructor(props) {

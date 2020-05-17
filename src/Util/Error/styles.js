@@ -154,9 +154,9 @@ export const ErrorContainer = Styled.div`
 	100% { opacity: 0; transform: scale(4.5) translate(-22%, -7%); }
 }
 
-#crashed-rocket circle:nth-child(1) { animation: smokeR 5s 0s infinite }
-#crashed-rocket circle:nth-child(2) { animation: smokeL 5s 1s infinite }
-#crashed-rocket circle:nth-child(3) { animation: smokeR 5s 2s infinite }
-#crashed-rocket circle:nth-child(4) { animation: smokeL 5s 3s infinite }
-#crashed-rocket circle:nth-child(5) { animation: smokeR 5s 4s infinite }
-#crashed-rocket circle:nth-child(6) { animation: smokeL 5s 5s infinite }`;
+#crashed-rocket circle:nth-of-type(1) { animation: smokeR 5s 0s infinite }
+#crashed-rocket circle:nth-of-type(2) { animation: smokeL 5s 1s infinite }
+#crashed-rocket circle:nth-of-type(3) { animation: smokeR 5s 2s infinite }
+#crashed-rocket circle:nth-of-type(4) { animation: smokeL 5s 3s infinite }
+#crashed-rocket circle:nth-of-type(5) { animation: smokeR 5s 4s infinite }
+#crashed-rocket circle:nth-of-type(6) { animation: smokeL 5s 5s infinite }`;
