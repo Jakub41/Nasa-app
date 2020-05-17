@@ -8,7 +8,6 @@ import {
   CardFontBodyText,
   ButtonText,
 } from "./styles";
-import "./styles.scss";
 import PropTypes from "prop-types";
 
 const PodCard = (props) => {

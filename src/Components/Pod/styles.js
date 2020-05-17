@@ -13,12 +13,19 @@ const TitleHeader = styled(Card.Header)`
   text-align: center;
 `;
 
-const CardContainer = styled(Card)({
-  width: 100 + "%",
-  border: "#000",
-  marginTop: 20,
-  marginBottom: 20,
-});
+const CardContainer = styled(Card)`
+  width: 100%;
+  border: #000;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .card-img-top {
+    height: 800px;
+    @media (max-width: 768px) {
+      height: auto;
+    }
+  }
+`;
 
 const Image = css`
   height: 800px;
@@ -37,7 +44,7 @@ const CardFontBodyText = styled.span({
 const ButtonText = styled.span({
   fontFamily: "Exo",
   fontSize: 1 + "em",
-  textTransform: "uppercase"
+  textTransform: "uppercase",
 });
 
 export {
