@@ -15,7 +15,7 @@ export default class WeatherMarsIndex extends Component {
       isPrevious: false,
       isFetching: false,
       isLoading: true,
-      error: true,
+      error: false,
     };
   }
 
@@ -29,7 +29,7 @@ export default class WeatherMarsIndex extends Component {
 
     setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 1000);
+    }, 10500);
 
     this.setState({
       wMarsData: data,
@@ -48,7 +48,7 @@ export default class WeatherMarsIndex extends Component {
       selectedSol,
       isMetric,
       isPrevious,
-      error
+      error,
     } = this.state;
     return (
       <>
@@ -56,13 +56,16 @@ export default class WeatherMarsIndex extends Component {
           <MarsLoader />
         ) : (
           <>
-          {error ? <NotifyError /> :
-            <WeatherMars
-              sol={wMarsData[selectedSol]}
-              weather={wMarsData}
-              metric={isMetric}
-              prev={isPrevious}
-            />}
+            {error ? (
+              <NotifyError />
+            ) : (
+              <WeatherMars
+                sol={wMarsData[selectedSol]}
+                weather={wMarsData}
+                metric={isMetric}
+                prev={isPrevious}
+              />
+            )}
           </>
         )}
       </>

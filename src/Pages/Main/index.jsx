@@ -5,6 +5,7 @@ import { getPod } from "../../API";
 import PodCard from "../../Components/Pod";
 import Loader from "../../Components/Loader";
 import Delayed from "delayed";
+import NotifyError from "../../Util/Error";
 
 export default class Main extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class Main extends Component {
       podData: {},
       isFetching: false,
       isLoading: true,
-      error: null,
+      error: false,
       redirecting: false,
     };
   }
@@ -28,6 +29,8 @@ export default class Main extends Component {
 
   componentDidMount = async () => {
     const podData = await getPod();
+
+    if (!podData) this.setState({ error: true });
 
     Delayed.delay(() => {
       this.setState({ isLoading: false });
@@ -44,14 +47,21 @@ export default class Main extends Component {
   };
 
   render() {
-    const { podData, isLoading, redirecting } = this.state;
+    const { podData, isLoading, redirecting, error } = this.state;
     return redirecting ? (
       <Redirect to="/mars-weather" />
     ) : isLoading ? (
       <Loader />
     ) : (
       <>
-      <PodCard data={podData} redirect={this.redirectToMarsWeather}></PodCard>
+        {error ? (
+          <NotifyError />
+        ) : (
+          <PodCard
+            data={podData}
+            redirect={this.redirectToMarsWeather}
+          ></PodCard>
+        )}
       </>
     );
   }
