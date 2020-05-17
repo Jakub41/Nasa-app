@@ -50,7 +50,9 @@ export default class Main extends Component {
     ) : isLoading ? (
       <Loader />
     ) : (
+      <>
       <PodCard data={podData} redirect={this.redirectToMarsWeather}></PodCard>
+      </>
     );
   }
 }

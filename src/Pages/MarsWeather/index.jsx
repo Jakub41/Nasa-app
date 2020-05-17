@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import WeatherMars from "../../Components/Mars";
 import { MarsWeatherData } from "../../API/MarsWeatherData";
 import MarsLoader from "../../Components/MarsLoader";
+import NotifyError from "../../Util";
 
 export default class WeatherMarsIndex extends Component {
   constructor(props) {
@@ -14,16 +15,21 @@ export default class WeatherMarsIndex extends Component {
       isPrevious: false,
       isFetching: false,
       isLoading: true,
-      error: null,
+      error: true,
     };
   }
 
   componentDidMount = async () => {
     const data = await MarsWeatherData();
 
+    if (!data)
+      this.setState({
+        error: true,
+      });
+
     setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 10500);
+    }, 1000);
 
     this.setState({
       wMarsData: data,
@@ -42,18 +48,22 @@ export default class WeatherMarsIndex extends Component {
       selectedSol,
       isMetric,
       isPrevious,
+      error
     } = this.state;
     return (
       <>
         {isLoading ? (
           <MarsLoader />
         ) : (
-          <WeatherMars
-            sol={wMarsData[selectedSol]}
-            weather={wMarsData}
-            metric={isMetric}
-            prev={isPrevious}
-          />
+          <>
+          {error ? <NotifyError /> :
+            <WeatherMars
+              sol={wMarsData[selectedSol]}
+              weather={wMarsData}
+              metric={isMetric}
+              prev={isPrevious}
+            />}
+          </>
         )}
       </>
     );
