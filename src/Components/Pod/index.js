@@ -11,9 +11,21 @@ import {
 import PropTypes from "prop-types";
 import { IconContext } from "react-icons";
 import { FaRegCopyright } from "react-icons/fa";
+import { FiYoutube } from "react-icons/fi";
+import ReactPlayer from "react-player";
 
 const PodCard = (props) => {
-  const { title, url, hdurl, explanation, date, copyright } = props.data;
+  const {
+    title,
+    url,
+    hdurl,
+    explanation,
+    date,
+    copyright,
+    media_type,
+  } = props.data;
+
+  console.log("What media >> ", media_type);
 
   return (
     <>
@@ -23,9 +35,13 @@ const PodCard = (props) => {
             <Col>
               <CardContainer>
                 <TitleHeader>{title}</TitleHeader>
-                <a href={hdurl} target="_blank" rel="noopener noreferrer">
-                  <Card.Img variant="top" src={url} alt={title} />
-                </a>
+                {media_type === "video" ? (
+                  <ReactPlayer url={url} width="100%" height="500px" controls="true" />
+                ) : (
+                  <a href={hdurl} target="_blank" rel="noopener noreferrer">
+                    <Card.Img variant="top" src={url} alt={title} />
+                  </a>
+                )}
                 <Card.Body>
                   <Card.Text>
                     <CardFontTop>
@@ -34,7 +50,17 @@ const PodCard = (props) => {
                           color: "#0B3E92",
                         }}
                       >
-                        {date} <FaRegCopyright /> {copyright}
+                        {date}
+                        {copyright === undefined ? (
+                          <>
+                          <FiYoutube className="video-icon"/>
+                          </>
+                        ) : (
+                          <>
+                            <FaRegCopyright />
+                            {copyright}
+                          </>
+                        )}
                       </IconContext.Provider>
                     </CardFontTop>
                   </Card.Text>
@@ -60,9 +86,10 @@ PodCard.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
-    hdurl: PropTypes.string.isRequired,
+    hdurl: PropTypes.string,
     explanation: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    copyright: PropTypes.string.isRequired,
+    copyright: PropTypes.string,
+    media_type: PropTypes.string,
   }),
 };

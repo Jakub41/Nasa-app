@@ -12,7 +12,7 @@ const TitleHeader = styled(Card.Header)`
   font-size: 2rem;
   text-align: center;
   letter-spacing: 0.5rem;
-  color: #0B3E92;
+  color: #0b3e92;
 `;
 
 const CardContainer = styled(Card)`
@@ -26,6 +26,11 @@ const CardContainer = styled(Card)`
     @media (max-width: 768px) {
       height: auto;
     }
+  }
+
+  .video-icon {
+    margin-left: 1rem;
+    font-size: 30px;
   }
 `;
 
