@@ -14,7 +14,10 @@ const Theme = {
   font: "Exo",
 };
 
-export const ErrorContainer = Styled.div`
+export const ErrorContainer = Styled("div")`
+  display: flex;
+  flex-flow: column;
+  align-items:center;
   font-family: ${Theme.font};
   text-transform: uppercase;
 
