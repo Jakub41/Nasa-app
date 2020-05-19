@@ -28,6 +28,14 @@ const CardContainer = styled(Card)`
     }
   }
 
+  .nasa {
+    font-family: Nasa;
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    color: #0b3e92;
+    margin-left: 1rem;
+  }
+
   .video-icon {
     margin-left: 1rem;
     font-size: 30px;

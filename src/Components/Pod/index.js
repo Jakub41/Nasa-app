@@ -36,7 +36,12 @@ const PodCard = (props) => {
               <CardContainer>
                 <TitleHeader>{title}</TitleHeader>
                 {media_type === "video" ? (
-                  <ReactPlayer url={url} width="100%" height="500px" controls="true" />
+                  <ReactPlayer
+                    url={url}
+                    width="100%"
+                    height="500px"
+                    controls="true"
+                  />
                 ) : (
                   <a href={hdurl} target="_blank" rel="noopener noreferrer">
                     <Card.Img variant="top" src={url} alt={title} />
@@ -51,10 +56,11 @@ const PodCard = (props) => {
                         }}
                       >
                         {date}
-                        {copyright === undefined ? (
-                          <>
-                          <FiYoutube className="video-icon"/>
-                          </>
+                        {copyright === undefined && media_type !== "video" ? (
+                          <span className="nasa">nasa</span>
+                        ) : copyright === undefined &&
+                          media_type === "video" ? (
+                          <FiYoutube className="video-icon" />
                         ) : (
                           <>
                             <FaRegCopyright />
