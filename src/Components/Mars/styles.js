@@ -16,7 +16,7 @@ export const WrapperGlobal = Styled("div")`
     -moz-background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
-    height: 94vh;
+    height: 100vh;
     color: ${(props) => props.theme.colors.light};
 
     .sr-only:not(:focus):not(:active) {
