@@ -17,6 +17,12 @@ export default class WeatherMarsIndex extends Component {
       isLoading: true,
       error: false,
     };
+
+    this.handleMyProp = this.handleMyProp.bind(this);
+  }
+
+  handleMyProp(bool) {
+    this.setState({isPrevious: bool})
   }
 
   componentDidMount = async () => {
@@ -64,6 +70,7 @@ export default class WeatherMarsIndex extends Component {
                 weather={wMarsData}
                 metric={isMetric}
                 prev={isPrevious}
+                handleMyProp={this.handleMyProp}
               />
             )}
           </>

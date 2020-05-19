@@ -8,7 +8,7 @@ import Info from "./Info";
 import Unit from "./Unit";
 import Previous from "./Previous";
 
-const WeatherMars = ({ sol, weather, metric, prev }) => {
+const WeatherMars = ({ sol, weather, metric, prev, handleMyProp }) => {
   console.log("Sol", sol);
   console.log("Weather", weather);
   console.log("Metric", metric);
@@ -34,6 +34,7 @@ const WeatherMars = ({ sol, weather, metric, prev }) => {
               previous={prev}
               sol={sol}
               metric={metric}
+              handleMyProp={handleMyProp}
             />
           </AppWrapper>
         </WrapperGlobal>

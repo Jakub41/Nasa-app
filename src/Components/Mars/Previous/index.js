@@ -1,20 +1,19 @@
 import React from "react";
 import { PreviousWrapper, Toggle, PreviousDays, PreviousDay } from "./styles";
 
-const Previous = ({ weather, previous, sol, metric }) => {
+const Previous = ({ weather, previous, sol, metric, handleMyProp }) => {
   console.log("Prev", previous);
   console.log("Sol", sol);
 
-  const showPrev = () => {
-    console.log("CLICK", previous);
-    return (previous = !previous);
+  const showPrevious = () => {
+    handleMyProp(!previous);
   };
 
   return (
     <PreviousWrapper previous={previous}>
       <Toggle
         htmlFor="weather-toggle"
-        onClick={() => showPrev()}
+        onClick={showPrevious}
         previous={previous}
       >
         <span>&#8593;</span>
