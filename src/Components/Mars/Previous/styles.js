@@ -15,8 +15,8 @@ export const PreviousWrapper = Styled.div`
   padding: 3rem;
   .previous-weather__title {
     text-align: ${({ previous }) => (previous ? "left" : "center")};
-    ${({ prev }) =>
-      prev ? `animation: slideUpIn 750ms forwards;` : "text-align: center"};
+    ${({ previous }) =>
+      previous ? `animation: slideUpIn 750ms forwards;` : "text-align: center"};
   }
   @-webkit-keyframes slideUpIn {
     0% {
