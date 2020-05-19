@@ -3,7 +3,7 @@ import { ThemeProvider } from "emotion-theming";
 import { Theme } from "./theme.styles";
 import { WrapperGlobal, AppWrapper, MarsWeather } from "./styles";
 
-import WeatherMarsInfo from "./Weather";
+import WeatherMarsData from "./Weather";
 
 const WeatherMars = ({ sol, weather, metric, prev }) => {
   console.log("Sol", sol);
@@ -20,7 +20,7 @@ const WeatherMars = ({ sol, weather, metric, prev }) => {
               <h1 className="main-title">
                 Latest weather at Elysium Plantitia
               </h1>
-              <WeatherMarsInfo sol={sol} isMetric={metric} />
+              <WeatherMarsData sol={sol} isMetric={metric} />
             </MarsWeather>
           </AppWrapper>
         </WrapperGlobal>

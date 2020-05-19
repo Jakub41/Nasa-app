@@ -1,19 +1,44 @@
 import React from "react";
-import { Wrapper, Date } from "./styles";
-import { IconContext } from "react-icons";
+import { Wrapper, Date, Temp, Wind } from "./styles";
+import { formatTemperature } from "../../../Helpers";
 import { RiCelsiusLine, RiFahrenheitLine } from "react-icons/ri";
 import { WiCloudUp } from "react-icons/wi";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 
-const WeatherMarsInfo = ({ sol, isMetric }) => {
+const WeatherMarsData = ({ sol, isMetric }) => {
   return (
     <Wrapper>
       <Date>
-        <h2>{sol.sol}</h2>
+        <h2>{sol.sol} Sol</h2>
         <p>{sol.date}</p>
       </Date>
+      <Temp>
+        <h2 className="section-title">Temp</h2>
+        <p className="reading">
+          <FaTemperatureHigh />
+          <span> {formatTemperature(sol.maxTemp, isMetric)}</span>
+          <span> {isMetric ? <RiCelsiusLine /> : <RiFahrenheitLine />}</span>
+        </p>
+        <p className="reading">
+          <FaTemperatureLow />
+          <span> {formatTemperature(sol.minTemp, isMetric)}</span>
+          <span> {isMetric ? <RiCelsiusLine /> : <RiFahrenheitLine />}</span>
+        </p>
+      </Temp>
+
+      <Wind deg={sol.windDirectionDegrees}>
+        <h2 className="section-title">Wind</h2>
+        <p className="reading">
+          <span>{sol.windSpeed}</span>
+          <span>{isMetric ? " kph" : " mph"}</span>
+        </p>
+
+        <div className="wind__direction">
+          <div className="wind__arrow"></div>
+        </div>
+      </Wind>
     </Wrapper>
   );
 };
 
-export default WeatherMarsInfo;
+export default WeatherMarsData;

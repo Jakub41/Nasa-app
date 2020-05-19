@@ -11,10 +11,13 @@ export const WrapperGlobal = Styled("div")`
     margin: 0;
     font-family: Exo;
     line-height: 1.6;
-    background-image: url(${MarsBackGround});
+    background: url(${MarsBackGround}) no-repeat center center fixed;
     background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
     height: 94vh;
-    color: color: ${(props) => props.theme.colors.light};
+    color: ${(props) => props.theme.colors.light};
 
     .sr-only:not(:focus):not(:active) {
       clip: rect(0 0 0 0);
@@ -47,7 +50,7 @@ export const AppWrapper = Styled.div`
 export const MarsWeather = Styled.main`
   background: rgba(0, 0, 0, 0.7);
   padding: 2em;
-  max-width: 1000px;
+  width: 1000px;
   margin: 40px 0;
   border-radius: 20px;
   .main-title {
