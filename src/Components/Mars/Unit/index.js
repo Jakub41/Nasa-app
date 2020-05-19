@@ -8,7 +8,7 @@ const Unit = ({ metric }) => {
       <label htmlFor="cel">
         <RiCelsiusLine />
       </label>
-      <Toggle metric={metric} onClick="" />
+      <Toggle metric={metric} onClick={() => console.log("CLICK")} />
       <label htmlFor="fah">
         <RiFahrenheitLine />
       </label>

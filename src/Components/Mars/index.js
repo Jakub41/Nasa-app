@@ -6,6 +6,7 @@ import { WrapperGlobal, AppWrapper, MarsWeather, InfoWrapper } from "./styles";
 import WeatherMarsData from "./Weather";
 import Info from "./Info";
 import Unit from "./Unit";
+import Previous from "./Previous";
 
 const WeatherMars = ({ sol, weather, metric, prev }) => {
   console.log("Sol", sol);
@@ -28,6 +29,12 @@ const WeatherMars = ({ sol, weather, metric, prev }) => {
                 <Unit metric={metric} />
               </InfoWrapper>
             </MarsWeather>
+            <Previous
+              weather={weather}
+              previous={prev}
+              sol={sol}
+              metric={metric}
+            />
           </AppWrapper>
         </WrapperGlobal>
       </ThemeProvider>
