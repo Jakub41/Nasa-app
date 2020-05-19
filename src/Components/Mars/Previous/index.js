@@ -6,15 +6,15 @@ const Previous = ({ weather, previous, sol, metric }) => {
   console.log("Sol", sol);
 
   const showPrev = () => {
-    previous = !previous;
     console.log("CLICK", previous);
+    return (previous = !previous);
   };
 
   return (
     <PreviousWrapper previous={previous}>
       <Toggle
         htmlFor="weather-toggle"
-        onClick={() => showPrev((previous) => !previous)}
+        onClick={() => showPrev()}
         previous={previous}
       >
         <span>&#8593;</span>
