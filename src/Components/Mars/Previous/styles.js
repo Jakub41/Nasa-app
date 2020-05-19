@@ -73,8 +73,8 @@ export const PreviousDays = Styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   justify-content: space-between;
-  height: 150px;
-  overflow: auto;
+  height: auto;
+  overflow: hidden;
 `;
 
 export const PreviousDay = Styled.div`

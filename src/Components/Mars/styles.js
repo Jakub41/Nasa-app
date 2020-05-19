@@ -8,6 +8,10 @@ export const WrapperGlobal = Styled("div")`
       box-sizing: border-box;
     }
 
+    body {
+      overflow: hidden;
+    }
+
     margin: 0;
     font-family: Exo;
     line-height: 1.6;
@@ -16,7 +20,7 @@ export const WrapperGlobal = Styled("div")`
     -moz-background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
-    height: 100vh;
+    height: 90vh;
     color: ${(props) => props.theme.colors.light};
 
     .sr-only:not(:focus):not(:active) {

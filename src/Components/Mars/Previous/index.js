@@ -1,5 +1,6 @@
 import React from "react";
 import { PreviousWrapper, Toggle, PreviousDays, PreviousDay } from "./styles";
+import { FaLongArrowAltUp } from "react-icons/fa";
 
 const Previous = ({ weather, previous, sol, metric, handleMyProp }) => {
   console.log("Prev", previous);
@@ -16,7 +17,9 @@ const Previous = ({ weather, previous, sol, metric, handleMyProp }) => {
         onClick={showPrevious}
         previous={previous}
       >
-        <span>&#8593;</span>
+        <span>
+          <FaLongArrowAltUp />
+        </span>
         <span className="sr-only">Show previous weather</span>
       </Toggle>
 
