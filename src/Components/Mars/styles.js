@@ -72,3 +72,8 @@ export const MarsWeather = Styled.main`
     color: ${(props) => props.theme.colors.gray};
   }
 `;
+
+export const InfoWrapper = Styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+`;

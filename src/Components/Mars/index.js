@@ -1,15 +1,16 @@
 import React from "react";
 import { ThemeProvider } from "emotion-theming";
 import { Theme } from "./theme.styles";
-import { WrapperGlobal, AppWrapper, MarsWeather } from "./styles";
+import { WrapperGlobal, AppWrapper, MarsWeather, InfoWrapper } from "./styles";
 
 import WeatherMarsData from "./Weather";
+import Info from "./Info";
 
 const WeatherMars = ({ sol, weather, metric, prev }) => {
   console.log("Sol", sol);
   console.log("Weather", weather);
   console.log("Metric", metric);
-  console.log("Metric", prev);
+  console.log("Previous", prev);
 
   return (
     <>
@@ -21,6 +22,9 @@ const WeatherMars = ({ sol, weather, metric, prev }) => {
                 Latest weather at Elysium Plantitia
               </h1>
               <WeatherMarsData sol={sol} isMetric={metric} />
+              <InfoWrapper>
+                <Info />
+              </InfoWrapper>
             </MarsWeather>
           </AppWrapper>
         </WrapperGlobal>
