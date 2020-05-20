@@ -3,6 +3,7 @@ import { ThemeProvider } from "emotion-theming";
 import { Theme } from "./theme.styles";
 import { WrapperGlobal, AppWrapper, MarsWeather, InfoWrapper } from "./styles";
 
+// Mars Weather sections
 import WeatherMarsData from "./Weather";
 import Info from "./Info";
 import Unit from "./Unit";

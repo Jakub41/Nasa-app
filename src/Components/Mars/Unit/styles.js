@@ -11,6 +11,12 @@ export const UnitCss = Styled.div`
   :hover {
     opacity: 1;
   }
+
+  @media (max-width: 900px) {
+    position: absolute;
+    bottom: 512px;
+    right: 100px;
+  }
 `;
 
 export const Toggle = Styled.button`

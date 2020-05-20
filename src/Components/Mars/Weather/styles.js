@@ -25,6 +25,14 @@ export const Temp = Styled.div`
   border-left: var(--border);
   border-right: var(--border);
   padding: 0 2em;
+  @media (max-width: 988px) {
+    h2 {
+      font-size: 1.5rem!important;
+    }
+  }
+  @media (max-width: 768px) {
+    border: 0;
+  }
 `;
 
 export const Wind = Styled.div`
@@ -45,7 +53,7 @@ export const Wind = Styled.div`
     grid-row: 1 / span 2;
   }
   .wind__arrow {
-    --direction: ${(props) => props.deg + 'deg'};
+    --direction: ${(props) => props.deg + "deg"};
     --size: 0.8rem;
     height: calc(var(--size) * 3);
     width: var(--size);
@@ -56,5 +64,10 @@ export const Wind = Styled.div`
     transition: -webkit-transform 500ms ease;
     transition: transform 500ms ease;
     transition: transform 500ms ease, -webkit-transform 500ms ease;
+  }
+  @media (max-width: 988px) {
+    h2 {
+      font-size: 1.5rem!important;
+    }
   }
 `;

@@ -38,6 +38,18 @@ export const PreviousWrapper = Styled.div`
       transform: translateY(0);
     }
   }
+
+  @media (max-width: 1146px) {
+    height: 30%;
+  }
+
+  @media (max-width: 900px) {
+    height: 20%;
+    h2 {
+      margin-top: -22px!important;
+    }
+  }
+
 `;
 
 export const Toggle = Styled.button`
@@ -74,7 +86,11 @@ export const PreviousDays = Styled.div`
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   justify-content: space-between;
   height: auto;
-  overflow: hidden;
+
+  @media (max-width: 1146px) {
+    height: 170px;
+    overflow: auto;
+  }
 `;
 
 export const PreviousDay = Styled.div`
