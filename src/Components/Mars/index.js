@@ -8,7 +8,7 @@ import Info from "./Info";
 import Unit from "./Unit";
 import Previous from "./Previous";
 
-const WeatherMars = ({ sol, weather, metric, prev, handleMyProp }) => {
+const WeatherMars = ({ sol, weather, metric, prev, handleIsPrevious, handleIsMetric }) => {
   console.log("Sol", sol);
   console.log("Weather", weather);
   console.log("Metric", metric);
@@ -26,7 +26,7 @@ const WeatherMars = ({ sol, weather, metric, prev, handleMyProp }) => {
               <WeatherMarsData sol={sol} isMetric={metric} />
               <InfoWrapper>
                 <Info />
-                <Unit metric={metric} />
+                <Unit metric={metric} handleIsMetric={handleIsMetric} />
               </InfoWrapper>
             </MarsWeather>
             <Previous
@@ -34,7 +34,7 @@ const WeatherMars = ({ sol, weather, metric, prev, handleMyProp }) => {
               previous={prev}
               sol={sol}
               metric={metric}
-              handleMyProp={handleMyProp}
+              handleIsPrevious={handleIsPrevious}
             />
           </AppWrapper>
         </WrapperGlobal>

@@ -2,12 +2,12 @@ import React from "react";
 import { PreviousWrapper, Toggle, PreviousDays, PreviousDay } from "./styles";
 import { FaLongArrowAltUp } from "react-icons/fa";
 
-const Previous = ({ weather, previous, sol, metric, handleMyProp }) => {
+const Previous = ({ weather, previous, sol, metric, handleIsPrevious }) => {
   console.log("Prev", previous);
   console.log("Sol", sol);
 
   const showPrevious = () => {
-    handleMyProp(!previous);
+    handleIsPrevious(!previous);
   };
 
   return (
