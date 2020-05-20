@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { Card } from "react-bootstrap";
-// import NasaFont from "../../Assets/Fonts/Nasa/Nasa.ttf";
 
 const Body = styled.div({
   backgroundColor: "#000",
@@ -36,8 +35,9 @@ const CardContainer = styled(Card)`
     margin-left: 1rem;
   }
 
-  .video-icon {
+  .pod-icon {
     margin-left: 1rem;
+    margin-right: 1rem;
     font-size: 30px;
   }
 `;

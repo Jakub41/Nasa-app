@@ -60,10 +60,10 @@ const PodCard = (props) => {
                           <span className="nasa">nasa</span>
                         ) : copyright === undefined &&
                           media_type === "video" ? (
-                          <FiYoutube className="video-icon" />
+                          <FiYoutube className="pod-icon" />
                         ) : (
                           <>
-                            <FaRegCopyright />
+                            <FaRegCopyright className="pod-icon"/>
                             {copyright}
                           </>
                         )}
