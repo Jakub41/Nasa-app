@@ -5,7 +5,6 @@ import { RiCelsiusLine, RiFahrenheitLine } from "react-icons/ri";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 
 const WeatherMarsData = ({ sol, isMetric, setSelectedSol }) => {
-  console.log("Selected Weather Data", setSelectedSol);
   return (
     <Wrapper>
       <Date>

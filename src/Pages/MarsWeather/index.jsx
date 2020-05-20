@@ -33,7 +33,6 @@ export default class WeatherMarsIndex extends Component {
   }
 
   handleSelectedSol(selectedSol) {
-    console.log("Selected info", selectedSol);
     this.setState({ setSelectedSol: selectedSol });
   }
 
