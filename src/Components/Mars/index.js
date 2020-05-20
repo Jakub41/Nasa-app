@@ -8,12 +8,16 @@ import Info from "./Info";
 import Unit from "./Unit";
 import Previous from "./Previous";
 
-const WeatherMars = ({ sol, weather, metric, prev, handleIsPrevious, handleIsMetric, handleSelectedSol, setSelectedSol }) => {
-  console.log("Sol", sol);
-  console.log("Weather", weather);
-  console.log("Metric", metric);
-  console.log("Previous", prev);
-
+const WeatherMars = ({
+  sol,
+  weather,
+  metric,
+  prev,
+  handleIsPrevious,
+  handleIsMetric,
+  handleSelectedSol,
+  setSelectedSol,
+}) => {
   return (
     <>
       <ThemeProvider theme={Theme}>
@@ -23,7 +27,11 @@ const WeatherMars = ({ sol, weather, metric, prev, handleIsPrevious, handleIsMet
               <h1 className="main-title">
                 Latest weather at Elysium Plantitia
               </h1>
-              <WeatherMarsData sol={sol} isMetric={metric} />
+              <WeatherMarsData
+                sol={sol}
+                isMetric={metric}
+                setSelectedSol={setSelectedSol}
+              />
               <InfoWrapper>
                 <Info />
                 <Unit metric={metric} handleIsMetric={handleIsMetric} />
@@ -33,6 +41,7 @@ const WeatherMars = ({ sol, weather, metric, prev, handleIsPrevious, handleIsMet
               weather={weather}
               previous={prev}
               sol={sol}
+              setSelectedSol={setSelectedSol}
               metric={metric}
               handleIsPrevious={handleIsPrevious}
               handleSelectedSol={handleSelectedSol}

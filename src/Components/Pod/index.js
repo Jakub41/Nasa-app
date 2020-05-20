@@ -25,8 +25,6 @@ const PodCard = (props) => {
     media_type,
   } = props.data;
 
-  console.log("What media >> ", media_type);
-
   return (
     <>
       <Body>

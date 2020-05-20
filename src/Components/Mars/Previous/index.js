@@ -12,16 +12,13 @@ const Previous = ({
   handleIsPrevious,
   handleSelectedSol,
 }) => {
-  console.log("Prev", previous);
-  console.log("Sol", sol);
 
   const showPrevious = () => {
     handleIsPrevious(!previous);
   };
 
   const clickMoreInfo = (selectedSol) => {
-    console.log("Selected info", selectedSol);
-    handleSelectedSol(selectedSol);
+    handleSelectedSol(setSelectedSol = selectedSol);
   };
 
   return (

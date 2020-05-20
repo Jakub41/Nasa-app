@@ -54,9 +54,6 @@ export default class WeatherMarsIndex extends Component {
       selectedSol: data.length - 1,
       isFetching: true,
     });
-
-    console.log("MW Data >> ", this.state.wMarsData);
-    console.log("SOL Data >> ", this.state.selectedSol);
   };
 
   render() {
