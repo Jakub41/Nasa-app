@@ -51,9 +51,7 @@ export const Wind = Styled.div`
     width: var(--size);
     background: ${(props) => props.theme.colors.dark};
     clip-path: polygon(50% 0, 0% 100%, 100% 100%);
-    /** Will get geg from API wind direction */
-    /* transform: translateY(-50%) rotate(var(--direction)); */
-    transform: translateY(-50%) rotate(225deg);
+    transform: translateY(-50%) rotate(var(--direction));
     transform-origin: bottom center;
     transition: -webkit-transform 500ms ease;
     transition: transform 500ms ease;
