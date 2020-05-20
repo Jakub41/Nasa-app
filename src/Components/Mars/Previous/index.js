@@ -3,12 +3,25 @@ import { formatTemperature } from "../../../Helpers";
 import { PreviousWrapper, Toggle, PreviousDays, PreviousDay } from "./styles";
 import { FaLongArrowAltUp } from "react-icons/fa";
 
-const Previous = ({ weather, previous, sol, metric, handleIsPrevious }) => {
+const Previous = ({
+  weather,
+  previous,
+  sol,
+  setSelectedSol,
+  metric,
+  handleIsPrevious,
+  handleSelectedSol,
+}) => {
   console.log("Prev", previous);
   console.log("Sol", sol);
 
   const showPrevious = () => {
     handleIsPrevious(!previous);
+  };
+
+  const clickMoreInfo = (selectedSol) => {
+    console.log("Selected info", selectedSol);
+    handleSelectedSol(selectedSol);
   };
 
   return (
@@ -44,7 +57,7 @@ const Previous = ({ weather, previous, sol, metric, handleIsPrevious }) => {
             </p>
             <button
               className="previous-day__more-info"
-              onClick={() => console.log("CLICK")}
+              onClick={() => clickMoreInfo(weather[i])}
             >
               More info
             </button>

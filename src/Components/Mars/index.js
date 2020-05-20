@@ -8,7 +8,7 @@ import Info from "./Info";
 import Unit from "./Unit";
 import Previous from "./Previous";
 
-const WeatherMars = ({ sol, weather, metric, prev, handleIsPrevious, handleIsMetric }) => {
+const WeatherMars = ({ sol, weather, metric, prev, handleIsPrevious, handleIsMetric, handleSelectedSol, setSelectedSol }) => {
   console.log("Sol", sol);
   console.log("Weather", weather);
   console.log("Metric", metric);
@@ -35,6 +35,7 @@ const WeatherMars = ({ sol, weather, metric, prev, handleIsPrevious, handleIsMet
               sol={sol}
               metric={metric}
               handleIsPrevious={handleIsPrevious}
+              handleSelectedSol={handleSelectedSol}
             />
           </AppWrapper>
         </WrapperGlobal>

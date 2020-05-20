@@ -11,6 +11,7 @@ export default class WeatherMarsIndex extends Component {
     this.state = {
       wMarsData: [],
       selectedSol: "",
+      setSelectedSol: "",
       isMetric: true,
       isPrevious: false,
       isFetching: false,
@@ -20,6 +21,7 @@ export default class WeatherMarsIndex extends Component {
 
     this.handleIsPrevious = this.handleIsPrevious.bind(this);
     this.handleIsMetric = this.handleIsMetric.bind(this);
+    this.handleSelectedSol = this.handleSelectedSol.bind(this);
   }
 
   handleIsPrevious(bool) {
@@ -27,7 +29,12 @@ export default class WeatherMarsIndex extends Component {
   }
 
   handleIsMetric(bool) {
-    this.setState({  isMetric: bool });
+    this.setState({ isMetric: bool });
+  }
+
+  handleSelectedSol(selectedSol) {
+    console.log("Selected info", selectedSol);
+    this.setState({ setSelectedSol: selectedSol });
   }
 
   componentDidMount = async () => {
@@ -57,6 +64,7 @@ export default class WeatherMarsIndex extends Component {
       wMarsData,
       isLoading,
       selectedSol,
+      setSelectedSol,
       isMetric,
       isPrevious,
       error,
@@ -72,11 +80,13 @@ export default class WeatherMarsIndex extends Component {
             ) : (
               <WeatherMars
                 sol={wMarsData[selectedSol]}
+                setSelectedSol={setSelectedSol}
                 weather={wMarsData}
                 metric={isMetric}
                 prev={isPrevious}
                 handleIsPrevious={this.handleIsPrevious}
                 handleIsMetric={this.handleIsMetric}
+                handleSelectedSol={this.handleSelectedSol}
               />
             )}
           </>
