@@ -1,6 +1,6 @@
 import React from "react";
 import { Wrapper, Date, Temp, Wind } from "./styles";
-import { formatTemperature } from "../../../Helpers";
+import { formatTemperature, formatWindSpeed } from "../../../Helpers";
 import { RiCelsiusLine, RiFahrenheitLine } from "react-icons/ri";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 
@@ -28,7 +28,7 @@ const WeatherMarsData = ({ sol, isMetric }) => {
       <Wind deg={sol.windDirectionDegrees}>
         <h2 className="section-title">Wind</h2>
         <p className="reading">
-          <span>{sol.windSpeed}</span>
+          <span>{formatWindSpeed(sol.windSpeed, isMetric)}</span>
           <span>{isMetric ? " kph" : " mph"}</span>
         </p>
 
