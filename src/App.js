@@ -5,7 +5,7 @@ import Styles from "./Common/Styles";
 import { Container } from "react-bootstrap";
 
 import Navbar from "./Components/Navbar";
-import Home from "./Pages/Home";
+import MarsWeather from "./Pages/MarsWeather";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Container>
         <Navbar />
       </Container>
-      <Route path="/home" component={Home} exact />
+      <Route path="/mars-weather" component={MarsWeather} exact />
     </>
   );
 }

@@ -15,7 +15,7 @@ const NavBar = () => {
               <Nav.Link as={NavLink} to="/">
                 <BsArrowReturnLeft /> PoD
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/home">
+              <Nav.Link as={NavLink} to="/mars-weather">
                 Home
               </Nav.Link>
               <Nav.Link as={NavLink} to="/about">
