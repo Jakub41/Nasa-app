@@ -2,7 +2,6 @@ import React from "react";
 import { Wrapper, Date, Temp, Wind } from "./styles";
 import { formatTemperature } from "../../../Helpers";
 import { RiCelsiusLine, RiFahrenheitLine } from "react-icons/ri";
-import { WiCloudUp } from "react-icons/wi";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 
 const WeatherMarsData = ({ sol, isMetric }) => {

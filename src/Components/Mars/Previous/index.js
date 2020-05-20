@@ -1,4 +1,5 @@
 import React from "react";
+import { formatTemperature } from "../../../Helpers";
 import { PreviousWrapper, Toggle, PreviousDays, PreviousDay } from "./styles";
 import { FaLongArrowAltUp } from "react-icons/fa";
 
@@ -33,12 +34,12 @@ const Previous = ({ weather, previous, sol, metric, handleIsPrevious }) => {
             <p className="previous-day__date">{sol.date}</p>
             <p className="previous-day__temp">
               High:
-              <span>{sol.maxTemp}</span>
+              <span>{formatTemperature(sol.maxTemp, metric)}</span>
               <span>{metric ? " C" : " F"}</span>
             </p>
             <p className="previous-day__temp">
               Low:
-              <span>{sol.minTemp}</span>
+              <span>{formatTemperature(sol.minTemp, metric)}</span>
               <span>{metric ? " C" : " F"}</span>
             </p>
             <button
