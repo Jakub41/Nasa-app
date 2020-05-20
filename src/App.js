@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap";
 
 import Navbar from "./Components/Navbar";
 import MarsWeather from "./Pages/MarsWeather";
+import MarsRovers from "./Pages/MarsRovers";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Navbar />
       </Container>
       <Route path="/mars-weather" component={MarsWeather} exact />
+      <Route path="/mars-rovers" component={MarsRovers} exact />
     </>
   );
 }

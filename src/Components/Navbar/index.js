@@ -16,10 +16,10 @@ const NavBar = () => {
                 <BsArrowReturnLeft /> PoD
               </Nav.Link>
               <Nav.Link as={NavLink} to="/mars-weather">
-                Home
+                Mars Weather
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/about">
-                About
+              <Nav.Link as={NavLink} to="/mars-rovers">
+                Mars Rovers
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
