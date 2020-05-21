@@ -5,7 +5,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 'off',
     'import/no-named-as-default': 'off',
-    semi: [2, 'always'],
+    'semi': [2, 'always'],
     'max-len': ['error', { code: 100 }],
     'prefer-promise-reject-errors': ['off'],
     'react/jsx-filename-extension': ['off'],
