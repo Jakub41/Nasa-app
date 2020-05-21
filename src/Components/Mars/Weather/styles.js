@@ -1,11 +1,11 @@
-import Styled from "@emotion/styled";
+import Styled from '@emotion/styled'
 
 export const Wrapper = Styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 2em;
   padding: 40px 0;
-`;
+`
 
 export const Date = Styled.div`
   h2 {
@@ -18,7 +18,7 @@ export const Date = Styled.div`
     color: ${(props) => props.theme.colors.gray};
     font-weight: ${(props) => props.theme.fontWeight.light};
   }
-`;
+`
 
 export const Temp = Styled.div`
   --border: solid 0.25em ${(props) => props.theme.colors.dark};
@@ -33,7 +33,7 @@ export const Temp = Styled.div`
   @media (max-width: 768px) {
     border: 0;
   }
-`;
+`
 
 export const Wind = Styled.div`
   display: grid;
@@ -53,7 +53,7 @@ export const Wind = Styled.div`
     grid-row: 1 / span 2;
   }
   .wind__arrow {
-    --direction: ${(props) => props.deg + "deg"};
+    --direction: ${(props) => `${props.deg}deg`};
     --size: 0.8rem;
     height: calc(var(--size) * 3);
     width: var(--size);
@@ -70,4 +70,4 @@ export const Wind = Styled.div`
       font-size: 1.5rem!important;
     }
   }
-`;
+`

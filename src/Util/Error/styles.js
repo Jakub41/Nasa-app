@@ -1,20 +1,20 @@
-import Styled from "@emotion/styled";
+import Styled from '@emotion/styled'
 
 const Theme = {
   clr: {
-    white: "#FCFCFC",
-    gray: "#CBCDD3",
-    dark: "#777777",
-    error: "#EF8D9C",
-    orange: "#FFC39E",
-    success: "#B0DB7D",
-    secondary: "#99DBB4",
+    white: '#FCFCFC',
+    gray: '#CBCDD3',
+    dark: '#777777',
+    error: '#EF8D9C',
+    orange: '#FFC39E',
+    success: '#B0DB7D',
+    secondary: '#99DBB4',
   },
 
-  font: "Exo",
-};
+  font: 'Exo',
+}
 
-export const ErrorContainer = Styled("div")`
+export const ErrorContainer = Styled('div')`
   display: flex;
   flex-flow: column;
   align-items:center;
@@ -165,4 +165,4 @@ export const ErrorContainer = Styled("div")`
 #crashed-rocket circle:nth-of-type(3) { animation: smokeR 5s 2s infinite }
 #crashed-rocket circle:nth-of-type(4) { animation: smokeL 5s 3s infinite }
 #crashed-rocket circle:nth-of-type(5) { animation: smokeR 5s 4s infinite }
-#crashed-rocket circle:nth-of-type(6) { animation: smokeL 5s 5s infinite }`;
+#crashed-rocket circle:nth-of-type(6) { animation: smokeL 5s 5s infinite }`

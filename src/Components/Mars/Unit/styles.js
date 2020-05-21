@@ -1,4 +1,4 @@
-import Styled from "@emotion/styled";
+import Styled from '@emotion/styled'
 
 export const UnitCss = Styled.div`
   place-self: end;
@@ -17,7 +17,7 @@ export const UnitCss = Styled.div`
     bottom: 512px;
     right: 100px;
   }
-`;
+`
 
 export const Toggle = Styled.button`
   cursor: pointer;
@@ -34,7 +34,7 @@ export const Toggle = Styled.button`
     border-radius: 50%;
     height: 1rem;
     margin: 3px;
-    margin-left: ${(props) => (props.metric ? "3px" : "auto")};
+    margin-left: ${(props) => (props.metric ? '3px' : 'auto')};
     width: 1rem;
   }
-`;
+`

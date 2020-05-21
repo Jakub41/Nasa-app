@@ -1,7 +1,7 @@
-import Styled from "@emotion/styled";
-import MarsBackGround from "../../Assets/Images/marsWeather.jpg";
+import Styled from '@emotion/styled'
+import MarsBackGround from '../../Assets/Images/marsWeather.jpg'
 
-export const WrapperGlobal = Styled("div")`
+export const WrapperGlobal = Styled('div')`
     *,
     *::before,
     *::after {
@@ -42,14 +42,14 @@ export const WrapperGlobal = Styled("div")`
     a:hover {
       color: ${(props) => props.theme.colors.dark};
     }
-`;
+`
 
 export const AppWrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-`;
+`
 
 export const MarsWeather = Styled.main`
   background: rgba(0, 0, 0, 0.7);
@@ -75,9 +75,9 @@ export const MarsWeather = Styled.main`
     margin: 0;
     color: ${(props) => props.theme.colors.gray};
   }
-`;
+`
 
 export const InfoWrapper = Styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-`;
+`

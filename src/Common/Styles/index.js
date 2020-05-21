@@ -1,5 +1,5 @@
-import { Fonts } from "./Fonts";
+import { Fonts } from './Fonts';
 
 export default {
-  Fonts
-}
+  Fonts,
+};

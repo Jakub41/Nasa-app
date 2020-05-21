@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
-import { css } from "@emotion/core";
-import { Card } from "react-bootstrap";
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+import { Card } from 'react-bootstrap'
 
 const Body = styled.div({
-  backgroundColor: "#000",
-});
+  backgroundColor: '#000',
+})
 
 const TitleHeader = styled(Card.Header)`
   font-family: Nasa;
@@ -12,7 +12,7 @@ const TitleHeader = styled(Card.Header)`
   text-align: center;
   letter-spacing: 0.5rem;
   color: #0b3e92;
-`;
+`
 
 const CardContainer = styled(Card)`
   width: 100%;
@@ -40,27 +40,27 @@ const CardContainer = styled(Card)`
     margin-right: 1rem;
     font-size: 30px;
   }
-`;
+`
 
 const Image = css`
   height: 800px;
-`;
+`
 
 const CardFontTop = styled.span({
-  fontFamily: "Space Mono",
-  fontSize: 1.5 + "em",
-});
+  fontFamily: 'Space Mono',
+  fontSize: `${1.5}em`,
+})
 
 const CardFontBodyText = styled.span({
-  fontFamily: "Baloo",
-  fontSize: 1 + "em",
-});
+  fontFamily: 'Baloo',
+  fontSize: `${1}em`,
+})
 
 const ButtonText = styled.span({
-  fontFamily: "Exo",
-  fontSize: 1 + "em",
-  textTransform: "uppercase",
-});
+  fontFamily: 'Exo',
+  fontSize: `${1}em`,
+  textTransform: 'uppercase',
+})
 
 export {
   Body,
@@ -70,4 +70,4 @@ export {
   CardFontTop,
   CardFontBodyText,
   ButtonText,
-};
+}
