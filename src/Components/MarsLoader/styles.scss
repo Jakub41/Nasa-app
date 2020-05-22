@@ -47,14 +47,14 @@ $curve2: cubic-bezier(0.645, 0.045, 0.355, 1);
       animation: flag-pole $timing $curve2 infinite;
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         height: 17px;
         width: 2px;
         background: #eee;
       }
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         height: 10px;
         width: 14px;
@@ -77,7 +77,7 @@ $curve2: cubic-bezier(0.645, 0.045, 0.355, 1);
       }
     }
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 80px;
       left: -30px;
@@ -177,7 +177,7 @@ $curve2: cubic-bezier(0.645, 0.045, 0.355, 1);
       border-radius: 100% 100% 0 0;
 
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         left: 2px;
         top: 100%;

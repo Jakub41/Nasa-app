@@ -1,7 +1,7 @@
-import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import { Navbar, Nav } from 'react-bootstrap'
-import { BsArrowReturnLeft } from 'react-icons/bs'
+import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
+import { BsArrowReturnLeft } from 'react-icons/bs';
 
 const NavBar = () => (
   <>
@@ -12,7 +12,9 @@ const NavBar = () => (
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link as={NavLink} to="/">
-              <BsArrowReturnLeft /> PoD
+              <BsArrowReturnLeft />
+              {' '}
+              PoD
             </Nav.Link>
             <Nav.Link as={NavLink} to="/mars-weather">
               Home
@@ -25,6 +27,6 @@ const NavBar = () => (
       </Navbar>
     ) : null}
   </>
-)
+);
 
-export default NavBar
+export default NavBar;
