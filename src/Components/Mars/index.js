@@ -2,9 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import PropTypes from 'prop-types';
 import { Theme } from './theme.styles';
-import {
-  WrapperGlobal, AppWrapper, MarsWeather, InfoWrapper,
-} from './styles';
+import { WrapperGlobal, AppWrapper, MarsWeather, InfoWrapper } from './styles';
 
 // Mars Weather sections
 import WeatherMarsData from './Weather';
@@ -65,7 +63,14 @@ WeatherMars.defaultProps = {
     windSpeed: 0,
   }),
   weather: [],
-  setSelectedSol: {},
+  setSelectedSol: PropTypes.shape({
+    sol: '',
+    maxTemp: 0,
+    minTemp: 0,
+    date: '',
+    windDirectionDegrees: 0,
+    windSpeed: 0,
+  }),
 };
 
 WeatherMars.propTypes = {
@@ -77,14 +82,16 @@ WeatherMars.propTypes = {
     windDirectionDegrees: PropTypes.number.isRequired,
     windSpeed: PropTypes.number.isRequired,
   }),
-  weather: PropTypes.arrayOf(PropTypes.shape({
-    sol: PropTypes.string.isRequired,
-    maxTemp: PropTypes.number.isRequired,
-    minTemp: PropTypes.number.isRequired,
-    date: PropTypes.string.isRequired,
-    windDirectionDegrees: PropTypes.number.isRequired,
-    windSpeed: PropTypes.number.isRequired,
-  })),
+  weather: PropTypes.arrayOf(
+    PropTypes.shape({
+      sol: PropTypes.string.isRequired,
+      maxTemp: PropTypes.number.isRequired,
+      minTemp: PropTypes.number.isRequired,
+      date: PropTypes.string.isRequired,
+      windDirectionDegrees: PropTypes.number.isRequired,
+      windSpeed: PropTypes.number.isRequired,
+    }),
+  ),
   metric: PropTypes.bool.isRequired,
   prev: PropTypes.bool.isRequired,
   handleIsPrevious: PropTypes.func.isRequired,

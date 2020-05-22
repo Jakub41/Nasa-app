@@ -2,15 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri';
 import { FaTemperatureHigh, FaTemperatureLow } from 'react-icons/fa';
-import {
-  Wrapper, Date, Temp, Wind,
-} from './styles';
+import { Wrapper, Date, Temp, Wind } from './styles';
 import { formatTemperature, formatWindSpeed } from '../../../Helpers';
 
 const WeatherMarsData = ({ sol, isMetric, setSelectedSol }) => (
-
   <Wrapper>
-
     <Date>
       <h2>
         {setSelectedSol ? setSelectedSol.sol : sol.sol}
@@ -75,7 +71,14 @@ const WeatherMarsData = ({ sol, isMetric, setSelectedSol }) => (
 export default WeatherMarsData;
 
 WeatherMarsData.defaultProps = {
-  setSelectedSol: {},
+  setSelectedSol: PropTypes.shape({
+    sol: '',
+    maxTemp: 0,
+    minTemp: 0,
+    date: '',
+    windDirectionDegrees: 0,
+    windSpeed: 0,
+  }),
   sol: {},
 };
 

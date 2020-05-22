@@ -100,7 +100,14 @@ WeatherMarsIndex.defaultProps = {
   isLoading: true,
   error: false,
   selectedSol: '',
-  setSelectedSol: {},
+  setSelectedSol: PropTypes.shape({
+    sol: '',
+    maxTemp: 0,
+    minTemp: 0,
+    date: '',
+    windDirectionDegrees: 0,
+    windSpeed: 0,
+  }),
 }
 
 WeatherMarsIndex.propTypes = {
