@@ -1,7 +1,8 @@
 //Path: /.eslintrc.js
 module.exports = {
-  extends: ['airbnb', 'prettier'],
-  plugins: ['react', 'prettier'],
+  extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
+  parser: 'babel-eslint',
+  parserOptions: { sourceType: 'module' },
   rules: {
     'react/jsx-filename-extension': 'off',
     'import/no-named-as-default': 'off',
@@ -28,10 +29,12 @@ module.exports = {
         },
       },
     ],
+    'prettier/prettier': ['error', { singleQuote: true }],
+    quotes: [2, 'single', { avoidEscape: true }],
   },
   env: {
     browser: true,
     node: true,
     jest: true,
   },
-}
+};
