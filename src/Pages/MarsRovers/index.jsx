@@ -1,22 +1,18 @@
-import React, { Component } from "react";
-import { Jumbotron, Container } from "react-bootstrap";
-import ImgMars from "../../Assets/Images/mars_view.jpg";
-import { Image } from "./styles";
+import React, { Component } from 'react';
+import { Container } from 'react-bootstrap';
+
+import MarsRovers from '../../Components/MarsRovers';
 
 export default class MarsRoversIndex extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <Container>
-        <Jumbotron className="mt-3">
-          <Container>
-            <Image src={ImgMars} alt="mars-view"/>
-            <h1 class="display-4">THE ROVERS</h1>
-            <p class="lead">
-              This is a modified jumbotron that occupies the entire horizontal
-              space of its parent.
-            </p>
-          </Container>
-        </Jumbotron>
+        <MarsRovers />
       </Container>
     );
   }
