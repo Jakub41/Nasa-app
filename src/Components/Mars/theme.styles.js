@@ -1,12 +1,13 @@
+/* eslint-disable import/prefer-default-export */
 /** Theme */
 export const Theme = {
   colors: {
-    light: "#fff",
-    gray: "#989898",
-    dark: "#444",
-    accent: "#D06D6D",
-    accentDark: "#613131",
-    black: "#000000",
+    light: '#fff',
+    gray: '#989898',
+    dark: '#444',
+    accent: '#D06D6D',
+    accentDark: '#613131',
+    black: '#000000',
   },
 
   alpha: 0.7,
@@ -18,17 +19,17 @@ export const Theme = {
     bold: 700,
   },
 
-  fontSize: { h1: "1.5rem", h2: "2.25rem", body: "1rem", xl: "4.5rem" },
+  fontSize: { h1: '1.5rem', h2: '2.25rem', body: '1rem', xl: '4.5rem' },
 
   typography: {
     lineHeight: 1,
   },
 
   border: {
-    solid: "solid",
-    color: "#613131",
-    size: ".3em",
+    solid: 'solid',
+    color: '#613131',
+    size: '.3em',
   },
 
-  size: "5rem",
+  size: '5rem',
 };

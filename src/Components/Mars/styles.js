@@ -1,7 +1,7 @@
-import Styled from "@emotion/styled";
-import MarsBackGround from "../../Assets/Images/marsWeather.jpg";
+import Styled from '@emotion/styled';
+import MarsBackGround from '../../Assets/Images/marsWeather.jpg';
 
-export const WrapperGlobal = Styled("div")`
+export const WrapperGlobal = Styled('div')`
     *,
     *::before,
     *::after {

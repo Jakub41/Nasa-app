@@ -1,17 +1,14 @@
-import { API_KEY } from "../Config";
+import { API_KEY } from '../Config';
 
-export const NasaApiQuery = (urlGenerator, method = "GET") => async (
-  body,
-  ...params
-) => {
+const NasaApiQuery = (urlGenerator, method = 'GET') => async (body, ...params) => {
   try {
     const url = urlGenerator(...params);
     const request = {
-      method: method,
-      body: body,
+      method,
+      body,
       headers: new Headers({
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       }),
     };
 
@@ -29,9 +26,10 @@ export const NasaApiQuery = (urlGenerator, method = "GET") => async (
     return {
       success: false,
       result: [],
-      message:
-        "There is an issue to get data from server. Please try again later.",
-      error: err
+      message: 'There is an issue to get data from server. Please try again later.',
+      error: err,
     };
   }
 };
+
+export default NasaApiQuery;

@@ -1,5 +1,10 @@
-import React from "react";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import React from 'react';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { IconContext } from 'react-icons';
+import { FaRegCopyright } from 'react-icons/fa';
+import { FiYoutube } from 'react-icons/fi';
+import ReactPlayer from 'react-player';
 import {
   Body,
   CardContainer,
@@ -7,23 +12,19 @@ import {
   CardFontTop,
   CardFontBodyText,
   ButtonText,
-} from "./styles";
-import PropTypes from "prop-types";
-import { IconContext } from "react-icons";
-import { FaRegCopyright } from "react-icons/fa";
-import { FiYoutube } from "react-icons/fi";
-import ReactPlayer from "react-player";
+} from './styles';
 
 const PodCard = (props) => {
   const {
-    title,
-    url,
-    hdurl,
-    explanation,
-    date,
-    copyright,
-    media_type,
-  } = props.data;
+    data: { title, url, hdurl, explanation, date, copyright, mediaType },
+    redirect,
+  } = props;
+
+  const mediaTypeCheck = () => {
+    if (mediaType !== 'video' && copyright === undefined) return <span className="nasa">nasa</span>;
+    if (mediaType === 'video' && copyright === undefined) return <FiYoutube className="pod-icon" />;
+    return false;
+  };
 
   return (
     <>
@@ -33,13 +34,8 @@ const PodCard = (props) => {
             <Col>
               <CardContainer>
                 <TitleHeader>{title}</TitleHeader>
-                {media_type === "video" ? (
-                  <ReactPlayer
-                    url={url}
-                    width="100%"
-                    height="500px"
-                    controls="true"
-                  />
+                {mediaType === 'video' ? (
+                  <ReactPlayer url={url} width="100%" height="500px" controls="true" />
                 ) : (
                   <a href={hdurl} target="_blank" rel="noopener noreferrer">
                     <Card.Img variant="top" src={url} alt={title} />
@@ -50,28 +46,18 @@ const PodCard = (props) => {
                     <CardFontTop>
                       <IconContext.Provider
                         value={{
-                          color: "#0B3E92",
-                        }}
-                      >
+                          color: '#0B3E92',
+                        }}>
                         {date}
-                        {copyright === undefined && media_type !== "video" ? (
-                          <span className="nasa">nasa</span>
-                        ) : copyright === undefined &&
-                          media_type === "video" ? (
-                          <FiYoutube className="pod-icon" />
-                        ) : (
-                          <>
-                            <FaRegCopyright className="pod-icon"/>
-                            {copyright}
-                          </>
-                        )}
+                        {mediaTypeCheck() || <FaRegCopyright className="pod-icon" />}
+                        {copyright}
                       </IconContext.Provider>
                     </CardFontTop>
                   </Card.Text>
                   <Card.Text>
                     <CardFontBodyText>{explanation}</CardFontBodyText>
                   </Card.Text>
-                  <Button variant="success" onClick={props.redirect}>
+                  <Button variant="success" onClick={redirect}>
                     <ButtonText>Enter</ButtonText>
                   </Button>
                 </Card.Body>
@@ -85,6 +71,18 @@ const PodCard = (props) => {
 };
 
 export default PodCard;
+
+PodCard.defaultProps = {
+  data: PropTypes.shape({
+    title: '',
+    url: '',
+    hdurl: '',
+    explanation: '',
+    date: '',
+    copyright: '',
+    media_type: '',
+  }),
+};
 
 PodCard.propTypes = {
   data: PropTypes.shape({

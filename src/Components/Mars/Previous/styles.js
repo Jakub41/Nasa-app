@@ -1,4 +1,5 @@
-import Styled from "@emotion/styled";
+/* eslint-disable import/prefer-default-export */
+import Styled from '@emotion/styled';
 
 export const PreviousWrapper = Styled.div`
   background: ${(props) => props.theme.colors.light};
@@ -7,16 +8,14 @@ export const PreviousWrapper = Styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  transform: ${({ previous }) =>
-    previous ? "translateY(0)" : "translateY(60%)"};
+  transform: ${({ previous }) => (previous ? 'translateY(0)' : 'translateY(60%)')};
   transition: -webkit-transform 350ms ease;
   transition: transform 350ms ease;
   transition: transform 350ms ease, -webkit-transform 350ms ease;
   padding: 3rem;
   .previous-weather__title {
-    text-align: ${({ previous }) => (previous ? "left" : "center")};
-    ${({ previous }) =>
-      previous ? `animation: slideUpIn 750ms forwards;` : "text-align: center"};
+    text-align: ${({ previous }) => (previous ? 'left' : 'center')};
+    ${({ previous }) => (previous ? 'animation: slideUpIn 750ms forwards;' : 'text-align: center')};
   }
   @-webkit-keyframes slideUpIn {
     0% {
@@ -73,8 +72,7 @@ export const Toggle = Styled.button`
   }
   span {
     display: block;
-    transform: ${({ previous }) =>
-      previous ? "rotate(180deg) translateY(-6px)" : "rotate(0)"};
+    transform: ${({ previous }) => (previous ? 'rotate(180deg) translateY(-6px)' : 'rotate(0)')};
     transition: -webkit-transform 300ms ease;
     transition: transform 300ms ease;
     transition: transform 300ms ease, -webkit-transform 300ms ease;
@@ -95,7 +93,7 @@ export const PreviousDays = Styled.div`
 
 export const PreviousDay = Styled.div`
   opacity: 0;
-  ${({ previous }) => previous && "animation: slideUpIn 750ms forwards;"};
+  ${({ previous }) => previous && 'animation: slideUpIn 750ms forwards;'};
   margin: 10px 0;
 
   > * {
