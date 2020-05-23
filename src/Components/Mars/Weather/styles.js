@@ -1,4 +1,4 @@
-import Styled from "@emotion/styled";
+import Styled from '@emotion/styled';
 
 export const Wrapper = Styled.div`
   display: grid;
@@ -53,7 +53,7 @@ export const Wind = Styled.div`
     grid-row: 1 / span 2;
   }
   .wind__arrow {
-    --direction: ${(props) => props.deg + "deg"};
+    --direction: ${(props) => `${props.deg}deg`};
     --size: 0.8rem;
     height: calc(var(--size) * 3);
     width: var(--size);

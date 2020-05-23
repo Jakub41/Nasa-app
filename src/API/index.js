@@ -1,12 +1,8 @@
-import { NasaApiQuery } from "./NasaApiQuery";
-import { POD_URL, W_MARS_URL } from "../Config";
+import NasaApiQuery from './NasaApiQuery';
+import { POD_URL, W_MARS_URL } from '../Config';
 
 // GET Picture of the day
-export const getPod = NasaApiQuery(() => {
-  return `${POD_URL}`;
-});
+export const getPod = NasaApiQuery(() => `${POD_URL}`);
 
 // GET Mars Weather
-export const getWeatherMars = NasaApiQuery(() => {
-  return `${W_MARS_URL}`;
-});
+export const getWeatherMars = NasaApiQuery(() => `${W_MARS_URL}`);

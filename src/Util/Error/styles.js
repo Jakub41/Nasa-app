@@ -1,20 +1,21 @@
-import Styled from "@emotion/styled";
+/* eslint-disable import/prefer-default-export */
+import Styled from '@emotion/styled';
 
 const Theme = {
   clr: {
-    white: "#FCFCFC",
-    gray: "#CBCDD3",
-    dark: "#777777",
-    error: "#EF8D9C",
-    orange: "#FFC39E",
-    success: "#B0DB7D",
-    secondary: "#99DBB4",
+    white: '#FCFCFC',
+    gray: '#CBCDD3',
+    dark: '#777777',
+    error: '#EF8D9C',
+    orange: '#FFC39E',
+    success: '#B0DB7D',
+    secondary: '#99DBB4',
   },
 
-  font: "Exo",
+  font: 'Exo',
 };
 
-export const ErrorContainer = Styled("div")`
+export const ErrorContainer = Styled('div')`
   display: flex;
   flex-flow: column;
   align-items:center;

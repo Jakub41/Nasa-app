@@ -1,6 +1,6 @@
-import React from "react";
-import { UnitCss, Toggle } from "./styles";
-import { RiCelsiusLine, RiFahrenheitLine } from "react-icons/ri";
+import React from 'react';
+import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri';
+import { UnitCss, Toggle } from './styles';
 
 const Unit = ({ metric, handleIsMetric }) => {
   const toggleUnit = () => {

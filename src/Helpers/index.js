@@ -1,5 +1,5 @@
 export const formatDate = (date) =>
-  date.toLocaleDateString(undefined, { day: "numeric", month: "long" });
+  date.toLocaleDateString(undefined, { day: 'numeric', month: 'long' });
 
 export const formatTemperature = (temperature, isMetric) => {
   let returnTemp = temperature;
