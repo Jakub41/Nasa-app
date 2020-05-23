@@ -1,9 +1,6 @@
 import { API_KEY } from '../Config';
 
-const NasaApiQuery = (urlGenerator, method = 'GET') => async (
-  body,
-  ...params
-) => {
+const NasaApiQuery = (urlGenerator, method = 'GET') => async (body, ...params) => {
   try {
     const url = urlGenerator(...params);
     const request = {
@@ -29,8 +26,7 @@ const NasaApiQuery = (urlGenerator, method = 'GET') => async (
     return {
       success: false,
       result: [],
-      message:
-        'There is an issue to get data from server. Please try again later.',
+      message: 'There is an issue to get data from server. Please try again later.',
       error: err,
     };
   }

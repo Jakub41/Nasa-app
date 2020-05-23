@@ -2,17 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaLongArrowAltUp } from 'react-icons/fa';
 import { formatTemperature } from '../../../Helpers';
-import {
-  PreviousWrapper, Toggle, PreviousDays, PreviousDay,
-} from './styles';
+import { PreviousWrapper, Toggle, PreviousDays, PreviousDay } from './styles';
 
-const Previous = ({
-  weather,
-  previous,
-  metric,
-  handleIsPrevious,
-  handleSelectedSol,
-}) => {
+const Previous = ({ weather, previous, metric, handleIsPrevious, handleSelectedSol }) => {
   const showPrevious = () => {
     handleIsPrevious(!previous);
   };
@@ -23,11 +15,7 @@ const Previous = ({
 
   return (
     <PreviousWrapper previous={previous}>
-      <Toggle
-        htmlFor="weather-toggle"
-        onClick={showPrevious}
-        previous={previous}
-      >
+      <Toggle htmlFor="weather-toggle" onClick={showPrevious} previous={previous}>
         <span>
           <FaLongArrowAltUp />
         </span>
@@ -55,8 +43,7 @@ const Previous = ({
             <button
               className="previous-day__more-info"
               onClick={() => clickMoreInfo(weather[i])}
-              type="submit"
-            >
+              type="submit">
               More info
             </button>
           </PreviousDay>
@@ -81,7 +68,7 @@ Previous.propTypes = {
       date: PropTypes.string.isRequired,
       windDirectionDegrees: PropTypes.number.isRequired,
       windSpeed: PropTypes.number.isRequired,
-    }),
+    })
   ),
   metric: PropTypes.bool.isRequired,
   previous: PropTypes.bool.isRequired,

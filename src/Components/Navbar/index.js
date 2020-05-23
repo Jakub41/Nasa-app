@@ -12,9 +12,7 @@ const NavBar = () => (
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link as={NavLink} to="/">
-              <BsArrowReturnLeft />
-              {' '}
-              PoD
+              <BsArrowReturnLeft /> PoD
             </Nav.Link>
             <Nav.Link as={NavLink} to="/mars-weather">
               Home

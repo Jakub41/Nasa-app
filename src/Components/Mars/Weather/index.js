@@ -24,10 +24,7 @@ const WeatherMarsData = ({ sol, isMetric, setSelectedSol }) => (
             ? formatTemperature(setSelectedSol.maxTemp, isMetric)
             : formatTemperature(sol.maxTemp, isMetric)}
         </span>
-        <span>
-          {' '}
-          {isMetric ? <RiCelsiusLine /> : <RiFahrenheitLine />}
-        </span>
+        <span> {isMetric ? <RiCelsiusLine /> : <RiFahrenheitLine />}</span>
       </p>
       <p className="reading">
         <FaTemperatureLow />
@@ -37,20 +34,11 @@ const WeatherMarsData = ({ sol, isMetric, setSelectedSol }) => (
             ? formatTemperature(setSelectedSol.minTemp, isMetric)
             : formatTemperature(sol.minTemp, isMetric)}
         </span>
-        <span>
-          {' '}
-          {isMetric ? <RiCelsiusLine /> : <RiFahrenheitLine />}
-        </span>
+        <span> {isMetric ? <RiCelsiusLine /> : <RiFahrenheitLine />}</span>
       </p>
     </Temp>
 
-    <Wind
-      deg={
-        setSelectedSol
-          ? setSelectedSol.windDirectionDegrees
-          : sol.windDirectionDegrees
-      }
-    >
+    <Wind deg={setSelectedSol ? setSelectedSol.windDirectionDegrees : sol.windDirectionDegrees}>
       <h2 className="section-title">Wind</h2>
       <p className="reading">
         <span>

@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /** Theme */
 export const Theme = {
   colors: {
@@ -31,4 +32,4 @@ export const Theme = {
   },
 
   size: '5rem',
-}
+};

@@ -26,11 +26,7 @@ const WeatherMars = ({
         <AppWrapper>
           <MarsWeather>
             <h1 className="main-title">Latest weather at Elysium Plantitia</h1>
-            <WeatherMarsData
-              sol={sol}
-              isMetric={metric}
-              setSelectedSol={setSelectedSol}
-            />
+            <WeatherMarsData sol={sol} isMetric={metric} setSelectedSol={setSelectedSol} />
             <InfoWrapper>
               <Info />
               <Unit metric={metric} handleIsMetric={handleIsMetric} />
@@ -90,7 +86,7 @@ WeatherMars.propTypes = {
       date: PropTypes.string.isRequired,
       windDirectionDegrees: PropTypes.number.isRequired,
       windSpeed: PropTypes.number.isRequired,
-    }),
+    })
   ),
   metric: PropTypes.bool.isRequired,
   prev: PropTypes.bool.isRequired,

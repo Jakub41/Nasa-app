@@ -10,9 +10,6 @@
     "source.fixAll.eslint": true
   },
   "eslint.alwaysShowStatus": true,
-  "prettier.disableLanguages": [
-    "js"
-  ],
   "files.autoSave": "onFocusChange",
   "prettier.singleQuote": true,
   "window.zoomLevel": 0,
@@ -23,4 +20,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
+  "prettier.printWidth": 100,
+  "html.format.wrapAttributes": "force",
+  "html.format.wrapLineLength": 40
 }

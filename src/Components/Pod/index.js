@@ -21,10 +21,8 @@ const PodCard = (props) => {
   } = props;
 
   const mediaTypeCheck = () => {
-    if (mediaType !== 'video' && copyright === undefined)
-      return <span className="nasa">nasa</span>;
-    if (mediaType === 'video' && copyright === undefined)
-      return <FiYoutube className="pod-icon" />;
+    if (mediaType !== 'video' && copyright === undefined) return <span className="nasa">nasa</span>;
+    if (mediaType === 'video' && copyright === undefined) return <FiYoutube className="pod-icon" />;
     return false;
   };
 
@@ -37,12 +35,7 @@ const PodCard = (props) => {
               <CardContainer>
                 <TitleHeader>{title}</TitleHeader>
                 {mediaType === 'video' ? (
-                  <ReactPlayer
-                    url={url}
-                    width="100%"
-                    height="500px"
-                    controls="true"
-                  />
+                  <ReactPlayer url={url} width="100%" height="500px" controls="true" />
                 ) : (
                   <a href={hdurl} target="_blank" rel="noopener noreferrer">
                     <Card.Img variant="top" src={url} alt={title} />
@@ -54,12 +47,9 @@ const PodCard = (props) => {
                       <IconContext.Provider
                         value={{
                           color: '#0B3E92',
-                        }}
-                      >
+                        }}>
                         {date}
-                        {mediaTypeCheck() || (
-                          <FaRegCopyright className="pod-icon" />
-                        )}
+                        {mediaTypeCheck() || <FaRegCopyright className="pod-icon" />}
                         {copyright}
                       </IconContext.Provider>
                     </CardFontTop>

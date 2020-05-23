@@ -1,31 +1,23 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
-import { getPod } from "../../API";
-import PodCard from "../../Components/Pod";
-import Loader from "../../Components/Loader";
-import Delayed from "delayed";
-import NotifyError from "../../Util/Error";
+/* eslint-disable no-nested-ternary */
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
+import Delayed from 'delayed';
+import { getPod } from '../../API';
+import PodCard from '../../Components/Pod';
+import Loader from '../../Components/Loader';
+import NotifyError from '../../Util/Error';
 
 export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
       podData: {},
-      isFetching: false,
       isLoading: true,
       error: false,
       redirecting: false,
     };
   }
-
-  static defaultProps = {
-    podData: {},
-  };
-
-  static propsTypes = {
-    podData: PropTypes.object.isRequired,
-  };
 
   componentDidMount = async () => {
     const podData = await getPod();
@@ -37,12 +29,11 @@ export default class Main extends Component {
     }, 3000);
 
     this.setState({
-      isFetching: true,
-      podData: podData,
+      podData,
     });
   };
 
-  redirectToMarsWeather = (e) => {
+  redirectToMarsWeather = () => {
     this.setState({ redirecting: true });
   };
 
@@ -54,14 +45,7 @@ export default class Main extends Component {
       <Loader />
     ) : (
       <>
-        {error ? (
-          <NotifyError />
-        ) : (
-          <PodCard
-            data={podData}
-            redirect={this.redirectToMarsWeather}
-          ></PodCard>
-        )}
+        {error ? <NotifyError /> : <PodCard data={podData} redirect={this.redirectToMarsWeather} />}
       </>
     );
   }
@@ -69,16 +53,16 @@ export default class Main extends Component {
 
 Main.defaultProps = {
   podData: {},
-  isFetching: false,
-  isLoading: true,
-  error: false,
-  redirecting: false,
 };
 
 Main.propTypes = {
-  podData: PropTypes.object.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  redirecting: PropTypes.bool.isRequired,
+  podData: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    hdurl: PropTypes.string,
+    explanation: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    copyright: PropTypes.string,
+    mediaType: PropTypes.string,
+  }),
 };

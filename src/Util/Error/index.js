@@ -1,19 +1,16 @@
-import React from 'react'
-import { ErrorContainer } from './styles'
+/* eslint-disable max-len */
+import React from 'react';
+import { ErrorContainer } from './styles';
 
 const NotifyError = () => {
   const refreshPage = () => {
-    window.location.reload(false)
-  }
+    window.location.reload(false);
+  };
   return (
     <ErrorContainer>
       <div id="error-box">
         <div className="error-message__img">
-          <svg
-            id="crashed-rocket"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 445.01"
-          >
+          <svg id="crashed-rocket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 445.01">
             <polygon
               points="180.21 392.09 112.87 410.86 129.98 416.68 27.35 439.77 153.75 422.09 136.85 411.41 218.24 390.54 180.21 392.09"
               fill="#565656"
@@ -102,7 +99,9 @@ const NotifyError = () => {
               fill="#ea495c"
             />
             <path
-              d="M122.48,319a430.8,430.8,0,0,1-16.16-51.63c-21.79-5.59-37.8-17.94-53.21-36.28C28,201.22,7.32,150.44,2,152.89S1.3,188,28.6,243.31c26.14,52.94,67,76.19,93.85,75.72m83.11-96.49a431.13,431.13,0,0,1,28.13,46.14c18.15-19.79,27.7-66,5.07-120.64-23.61-57-45.06-82.1-50.43-79.66s19.19,51.45,25.1,90c3.64,23.75,2.38,44-7.93,64.13"
+              d="M122.48,319a430.8,430.8,0,0,1-16.16-51.63c-21.79-5.59-37.8-17.94-53.21-36.28C28,
+              201.22,7.32,150.44,2,152.89S1.3,188,28.6,243.31c26.14,52.94,67,76.19,93.85,75.72m83.11-96.49a431.13,
+              431.13,0,0,1,28.13,46.14c18.15-19.79,27.7-66,5.07-120.64-23.61-57-45.06-82.1-50.43-79.66s19.19,51.45,25.1,90c3.64,23.75,2.38,44-7.93,64.13"
               transform="translate(0 -29.51)"
               fill="#ea495c"
             />
@@ -284,12 +283,12 @@ const NotifyError = () => {
           <p>oh no, something went wrong.</p>
           <p>refresh or come back later</p>
         </div>
-        <button onClick={refreshPage} className="button-box">
+        <button onClick={refreshPage} className="button-box" type="submit">
           <h1 className="red">Refresh</h1>
         </button>
       </div>
     </ErrorContainer>
-  )
-}
+  );
+};
 
-export default NotifyError
+export default NotifyError;

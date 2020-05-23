@@ -5,7 +5,7 @@ $red: #ee2c3e;
 .loader {
   background: $blue;
   padding: 2em;
-  font-family: "Exo";
+  font-family: 'Exo';
   text-transform: uppercase;
   min-width: 30em;
   overflow: hidden;
@@ -113,7 +113,7 @@ $red: #ee2c3e;
   position: relative;
   animation: spin 2s infinite linear;
   &:after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     top: 0;
@@ -126,7 +126,7 @@ $red: #ee2c3e;
     transform-origin: 100% 100%;
   }
   &:before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     bottom: 2.3em;
@@ -157,9 +157,8 @@ $red: #ee2c3e;
   height: 0.5em;
   background: white;
   border-radius: 50%;
-  box-shadow: white 2em 0em 0 -0.1em, white 1em 1em 0 -0.1em,
-    white 1.4em -1em 0 -0.2em, white -1em -0.3em 0 -0.1em,
-    white -0.1em 1.2em 0 -0.2em, white -2em 1.5em 0 -0.2em,
+  box-shadow: white 2em 0em 0 -0.1em, white 1em 1em 0 -0.1em, white 1.4em -1em 0 -0.2em,
+    white -1em -0.3em 0 -0.1em, white -0.1em 1.2em 0 -0.2em, white -2em 1.5em 0 -0.2em,
     white 0.5em 1.8em 0 -0.1em, white 1em 2em 0 -0.2em, white 2em 2.5em 0 -0.2em,
     white 2.3em 2.1em 0 -0.2em;
 }

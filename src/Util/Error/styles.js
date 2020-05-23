@@ -1,4 +1,5 @@
-import Styled from '@emotion/styled'
+/* eslint-disable import/prefer-default-export */
+import Styled from '@emotion/styled';
 
 const Theme = {
   clr: {
@@ -12,7 +13,7 @@ const Theme = {
   },
 
   font: 'Exo',
-}
+};
 
 export const ErrorContainer = Styled('div')`
   display: flex;
@@ -165,4 +166,4 @@ export const ErrorContainer = Styled('div')`
 #crashed-rocket circle:nth-of-type(3) { animation: smokeR 5s 2s infinite }
 #crashed-rocket circle:nth-of-type(4) { animation: smokeL 5s 3s infinite }
 #crashed-rocket circle:nth-of-type(5) { animation: smokeR 5s 4s infinite }
-#crashed-rocket circle:nth-of-type(6) { animation: smokeL 5s 5s infinite }`
+#crashed-rocket circle:nth-of-type(6) { animation: smokeL 5s 5s infinite }`;
