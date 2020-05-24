@@ -20,7 +20,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
-  "prettier.printWidth": 100,
+  "prettier.printWidth": 200,
   "html.format.wrapAttributes": "force",
   "html.format.wrapLineLength": 40
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import RoversMain from './RoversMain';
 
-export default function MarsRoversIndex() {
-  return <RoversMain />;
+export default function MarsRoversIndex({ curiosity, opportunity, spirit }) {
+  return <RoversMain curiosity={curiosity} opportunity={opportunity} spirit={spirit} />;
 }
 
 /*
