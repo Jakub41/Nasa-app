@@ -2,12 +2,12 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import RoversMain from './RoversMain';
+import { JumbotronWrapper } from './styles';
 
 export default function MarsRoversIndex({ curiosity, opportunity, spirit }) {
   return (
-    <>
+    <JumbotronWrapper>
       <Jumbotron className="jumbo-rovers">
-        {/* <Image src={ImgMars} alt="mars-view" /> */}
         <h1 className="display-4">MARS Exploration Rovers</h1>
         <p className="lead">
           NASA's Mars Exploration Rover (MER) mission was a robotic space mission involving two Mars
@@ -20,12 +20,6 @@ export default function MarsRoversIndex({ curiosity, opportunity, spirit }) {
         </p>
       </Jumbotron>
       <RoversMain curiosity={curiosity} opportunity={opportunity} spirit={spirit} />
-    </>
+    </JumbotronWrapper>
   );
 }
-
-/*
-<Container>
-
-      </Container>
-*/

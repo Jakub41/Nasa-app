@@ -24,7 +24,7 @@ export default function CardComponent({
     return <TopCardImg variant="top" src={ImgSpiritRover} alt={name} />;
   };
   return (
-    <Col md={4}>
+    <Col md={4} className="mb-5">
       <Card className="border-black mt-3">
         {imgRover()}
         <Card.Body>

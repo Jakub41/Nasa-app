@@ -4,6 +4,6 @@ import { Card } from 'react-bootstrap';
 
 export const TopCardImg = Styled(Card.Img)`
   width: 100%;
-  height: 15vw;
+  height: 50vh;
   object-fit: cover;
 `;
