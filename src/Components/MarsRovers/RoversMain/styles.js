@@ -23,7 +23,7 @@ export const CardHead = Styled(Card.Header)`
 `;
 
 export const TextStyle = Styled.span`
-    font-family: Exo;
+    font-family: Space mono;
     font-size: 1.5rem;
     font-weight: 300;
 `;
