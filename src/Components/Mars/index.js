@@ -59,14 +59,14 @@ WeatherMars.defaultProps = {
     windSpeed: 0,
   }),
   weather: [],
-  setSelectedSol: PropTypes.shape({
+  setSelectedSol: {
     sol: '',
     maxTemp: 0,
     minTemp: 0,
     date: '',
     windDirectionDegrees: 0,
     windSpeed: 0,
-  }),
+  },
 };
 
 WeatherMars.propTypes = {

@@ -91,14 +91,14 @@ export default class WeatherMarsIndex extends Component {
 }
 
 WeatherMarsIndex.defaultProps = {
-  setSelectedSol: PropTypes.shape({
+  setSelectedSol: {
     sol: '',
     maxTemp: 0,
     minTemp: 0,
     date: '',
     windDirectionDegrees: 0,
     windSpeed: 0,
-  }),
+  },
 };
 
 WeatherMarsIndex.propTypes = {

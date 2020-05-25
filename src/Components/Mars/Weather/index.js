@@ -59,14 +59,14 @@ const WeatherMarsData = ({ sol, isMetric, setSelectedSol }) => (
 export default WeatherMarsData;
 
 WeatherMarsData.defaultProps = {
-  setSelectedSol: PropTypes.shape({
+  setSelectedSol: {
     sol: '',
     maxTemp: 0,
     minTemp: 0,
     date: '',
     windDirectionDegrees: 0,
     windSpeed: 0,
-  }),
+  },
   sol: {},
 };
 

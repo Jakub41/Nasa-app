@@ -1,12 +1,13 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
-export default function Rover() {
-  const { name } = useParams();
-  console.log(name);
+export default function Rover(data) {
+  console.log('ROVER NAME', data.location.state.roverName);
+
+  const roverName = `${data.location.state.roverName}`;
   return (
-    <div>
-      <h1>Rover page</h1>
-    </div>
+    <Container>
+      <h1>{roverName}</h1>
+    </Container>
   );
 }

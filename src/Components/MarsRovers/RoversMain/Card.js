@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
+import { useHistory } from 'react-router-dom';
 import ImgCuriosityRover from '../../../Assets/Images/curiosity_rover.jpg';
 import ImgOpportunityRover from '../../../Assets/Images/oppoertunity_rover.jpg';
 import ImgSpiritRover from '../../../Assets/Images/spiritRover.jpg';
@@ -25,6 +26,14 @@ export default function CardComponent({
 
     return <TopCardImg variant="top" src={ImgSpiritRover} alt={name} />;
   };
+
+  const history = useHistory();
+
+  const redirectToRoverPage = () => {
+    console.log('REDIREC CLICK');
+    return history.push({ pathname: `/mars-rovers/rover/${name}`, state: { roverName: name } });
+  };
+
   return (
     <Col md={4} className="mb-5">
       <Card className="border-black mt-3">
@@ -74,7 +83,9 @@ export default function CardComponent({
               <TextStyle className="ml-5">{totalPhotos}</TextStyle>
             </Card.Text>
           </Card.Body>
-          <Button variant="success">ENTER</Button>
+          <Button variant="success" onClick={() => redirectToRoverPage()}>
+            ENTER
+          </Button>
         </Card.Body>
       </Card>
     </Col>
