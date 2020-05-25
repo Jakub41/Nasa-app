@@ -1,11 +1,10 @@
 import { API_KEY } from '../Config';
 
-const NasaApiQuery = (urlGenerator, method = 'GET') => async (body, ...params) => {
+const NasaApiQuery = (urlGenerator, method = 'GET') => async (...params) => {
   try {
     const url = urlGenerator(...params);
     const request = {
       method,
-      body,
       headers: new Headers({
         'Content-Type': 'application/json',
         Accept: 'application/json',
