@@ -16,3 +16,23 @@ export const formatWindSpeed = (speed, isMetric) => {
   }
   return Math.round(returnSpeed);
 };
+
+export const isEmpty = (obj) => {
+  return Object.keys(obj).length !== 0;
+};
+
+export const checkSelected = (isSelected, actual, value, isMetric) => {
+  if (value === 'maxTemp' || value === 'minTemp') {
+    if (isEmpty(isSelected)) return formatTemperature(isSelected[value], isMetric);
+
+    return formatTemperature(actual[value], isMetric);
+  }
+
+  if (value === 'windSpeed') {
+    if (isEmpty(isSelected)) return formatWindSpeed(isSelected[value], isMetric);
+
+    return formatWindSpeed(actual[value], isMetric);
+  }
+
+  return isEmpty(isSelected) ? isSelected[value] : actual[value];
+};
