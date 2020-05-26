@@ -10,8 +10,8 @@ export default class WeatherMarsIndex extends Component {
     super(props);
     this.state = {
       wMarsData: [],
-      selectedSol: '',
-      setSelectedSol: '',
+      selectedSol: {},
+      setSelectedSol: {},
       isMetric: true,
       isPrevious: false,
       isLoading: true,

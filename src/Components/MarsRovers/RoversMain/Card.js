@@ -30,7 +30,6 @@ export default function CardComponent({
   const history = useHistory();
 
   const redirectToRoverPage = () => {
-    console.log('REDIREC CLICK');
     return history.push({ pathname: `/mars-rovers/rover/${name}`, state: { roverName: name } });
   };
 
