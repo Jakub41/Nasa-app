@@ -4,6 +4,8 @@ import Delayed from 'delayed';
 import PropTypes from 'prop-types';
 import { getRoverManifest } from '../../API';
 import { ImgBK } from '../../Components/MarsRovers/styles';
+import NotifyError from '../../Util/Error';
+import RoversLoader from '../../Components/Loaders/RoversLoader';
 
 import MarsRovers from '../../Components/MarsRovers';
 
@@ -12,7 +14,7 @@ export default class MarsRoversIndex extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      // error: false,
+      error: false,
       manifest: {
         curiosity: {},
         spirit: {},
@@ -26,8 +28,8 @@ export default class MarsRoversIndex extends Component {
     const spiritManifest = await getRoverManifest('spirit');
     const opportunityManifest = await getRoverManifest('opportunity');
 
-    // if (!curiosityManifest || !spiritManifest || !opportunityManifest)
-    //   this.setState({ error: true });
+    if (!curiosityManifest || !spiritManifest || !opportunityManifest)
+      this.setState({ error: true });
 
     Delayed.delay(() => {
       this.setState({ isLoading: false });
@@ -45,17 +47,24 @@ export default class MarsRoversIndex extends Component {
   render() {
     const {
       isLoading,
+      error,
       manifest: { curiosity, spirit, opportunity },
     } = this.state;
 
     return isLoading ? (
-      <h1>LOADING...</h1>
+      <RoversLoader />
     ) : (
-      <ImgBK>
-        <Container>
-          <MarsRovers curiosity={curiosity} spirit={spirit} opportunity={opportunity} />
-        </Container>
-      </ImgBK>
+      <>
+        {error ? (
+          <NotifyError />
+        ) : (
+          <ImgBK>
+            <Container>
+              <MarsRovers curiosity={curiosity} spirit={spirit} opportunity={opportunity} />
+            </Container>
+          </ImgBK>
+        )}
+      </>
     );
   }
 }

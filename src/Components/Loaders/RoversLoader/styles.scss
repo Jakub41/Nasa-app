@@ -1,0 +1,122 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+/* ==========================================================================
+   Loader
+   ========================================================================== */
+
+$color: #934838;
+$duration: 4s;
+$ease: cubic-bezier(0.38, 0.11, 0.56, 0.83);
+$easeCircle: cubic-bezier(0.38, 0.11, 0.54, 1);
+
+.loader-rovers {
+  z-index: 1;
+  display: block;
+  width: 164px;
+  height: 164px;
+  margin-right: auto;
+  margin-left: auto;
+  animation: spin 30s linear infinite;
+
+  &:after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: calc(50% - 4em / 2);
+    left: calc(50% - 4em / 2);
+    display: block;
+    width: 4em;
+    height: 4em;
+    background-color: $color;
+    border-radius: 50%;
+    animation: pulse $duration $ease #{$duration/2 + 0.2s} infinite;
+    will-change: transform;
+  }
+}
+
+.loader__rocket {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: spin $duration $ease infinite;
+  will-change: transform;
+}
+
+.loader__icon {
+  position: absolute;
+  top: -1.05em;
+  left: calc(50% - 1em);
+  display: block;
+  transform: rotate(-90deg);
+}
+
+.loader__circle {
+  fill: transparent;
+  stroke: $color;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-linecap: square;
+  stroke-width: 5;
+  animation: dash $duration $easeCircle infinite;
+}
+
+.loader__svg {
+  display: inline-block;
+  width: 1.4em;
+  height: 2.33em;
+  fill: $color;
+  stroke: #000;
+  stroke-width: 1;
+}
+
+/*
+   Loader animations
+   ========================================================================== */
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-1turn);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 500;
+    // stroke-width: 3;
+  }
+  50% {
+    stroke-dashoffset: 380;
+    // stroke-width: 5;
+  }
+  100% {
+    stroke-dashoffset: 500;
+    // stroke-width: 3;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

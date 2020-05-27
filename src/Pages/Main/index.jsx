@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import Delayed from 'delayed';
 import { getPod } from '../../API';
 import PodCard from '../../Components/Pod';
-import Loader from '../../Components/Loader';
+import Loader from '../../Components/Loaders/Loader';
 import NotifyError from '../../Util/Error';
 
 export default class Main extends Component {
@@ -57,11 +57,11 @@ Main.defaultProps = {
 
 Main.propTypes = {
   podData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    url: PropTypes.string,
     hdurl: PropTypes.string,
-    explanation: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    explanation: PropTypes.string,
+    date: PropTypes.string,
     copyright: PropTypes.string,
     mediaType: PropTypes.string,
   }),
