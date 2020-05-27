@@ -85,7 +85,7 @@ export default function CardComponent({
               <TextStyle className="ml-5">{totalPhotos}</TextStyle>
             </Card.Text>
           </Card.Body>
-          <Button variant="success" onClick={() => redirectToRoverPage()}>
+          <Button variant="success" onClick={redirectToRoverPage}>
             ENTER
           </Button>
         </Card.Body>
