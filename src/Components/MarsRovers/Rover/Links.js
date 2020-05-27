@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Badge } from 'react-bootstrap';
+import Rover1 from '../../../Assets/Icons/rover1.png';
+import Rover2 from '../../../Assets/Icons/rover2.png';
 
 export default function Links({ roverName }) {
   const rovers = {
@@ -13,77 +14,110 @@ export default function Links({ roverName }) {
   if (roverName === 'Opportunity') {
     return (
       <>
-        <Badge pill variant="primary" className="mr-2">
-          <Link
-            className="text-white"
-            to={{
-              pathname: `/mars-rovers/rover/${rovers.curiosity}`,
-              state: { roverName: rovers.curiosity },
-            }}>
-            Curiosity
-          </Link>
-        </Badge>
-        <Badge pill variant="primary" className="mr-2">
-          <Link
-            className="text-white"
-            to={{
-              pathname: `/mars-rovers/rover/${rovers.spirit}`,
-              state: { roverName: rovers.spirit },
-            }}>
-            Spirit
-          </Link>
-        </Badge>
-      </>
-    );
-  }
-  if (roverName === 'Curiosity') {
-    return (
-      <>
-        <Badge pill variant="primary" className="mr-2">
-          <Link
-            className="text-white"
-            to={{
-              pathname: `/mars-rovers/rover/${rovers.opportunity}`,
-              state: { roverName: rovers.opportunity },
-            }}>
-            Opportunity
-          </Link>
-        </Badge>
-        <Badge pill variant="primary" className="mr-2">
-          <Link
-            className="text-white"
-            to={{
-              pathname: `/mars-rovers/rover/${rovers.spirit}`,
-              state: { roverName: rovers.spirit },
-            }}>
-            Spirit
-          </Link>
-        </Badge>
-      </>
-    );
-  }
-  return (
-    <>
-      <Badge pill variant="primary" className="mr-2">
         <Link
           className="text-white"
           to={{
             pathname: `/mars-rovers/rover/${rovers.curiosity}`,
             state: { roverName: rovers.curiosity },
           }}>
-          Curiosity
+          <div className="badge red">
+            <div className="circle">
+              <img src={Rover1} alt="rover-img" />
+            </div>
+            <div className="ribbon">
+              <span>Curiosity</span>
+            </div>
+          </div>
         </Link>
-      </Badge>
-      <Badge pill variant="primary" className="mr-2">
+
+        <Link
+          className="text-white"
+          to={{
+            pathname: `/mars-rovers/rover/${rovers.spirit}`,
+            state: { roverName: rovers.spirit },
+          }}>
+          <div className="badge red">
+            <div className="circle">
+              <img src={Rover2} alt="rover-img" />
+            </div>
+            <div className="ribbon">
+              <span>Spirit</span>
+            </div>
+          </div>
+        </Link>
+      </>
+    );
+  }
+  if (roverName === 'Curiosity') {
+    return (
+      <>
         <Link
           className="text-white"
           to={{
             pathname: `/mars-rovers/rover/${rovers.opportunity}`,
             state: { roverName: rovers.opportunity },
           }}>
-          Opportunity
+          <div className="badge red">
+            <div className="circle">
+              <img src={Rover1} alt="rover-img" />
+            </div>
+            <div className="ribbon">
+              <span>Opportunity</span>
+            </div>
+          </div>
         </Link>
-      </Badge>
+
+        <Link
+          className="text-white"
+          to={{
+            pathname: `/mars-rovers/rover/${rovers.spirit}`,
+            state: { roverName: rovers.spirit },
+          }}>
+          <div className="badge red">
+            <div className="circle">
+              <img src={Rover2} alt="rover-img" />
+            </div>
+            <div className="ribbon">
+              <span>Spirit</span>
+            </div>
+          </div>
+        </Link>
+      </>
+    );
+  }
+  return (
+    <>
+      <Link
+        className="text-white"
+        to={{
+          pathname: `/mars-rovers/rover/${rovers.curiosity}`,
+          state: { roverName: rovers.curiosity },
+        }}>
+        <div className="badge red">
+          <div className="circle">
+            <img src={Rover1} alt="rover-img" />
+          </div>
+          <div className="ribbon">
+            <span>Curiosity</span>
+          </div>
+        </div>
+      </Link>
+
+      <Link
+        className="text-white"
+        to={{
+          pathname: `/mars-rovers/rover/${rovers.opportunity}`,
+          state: { roverName: rovers.opportunity },
+        }}>
+        <div className="badge red">
+          <div className="circle">
+            <img src={Rover2} alt="rover-img" />
+          </div>
+          <div className="ribbon">
+            <span>Opportunity</span>
+          </div>
+        </div>
+      </Link>
     </>
   );
 }
