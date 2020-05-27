@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import Delayed from 'delayed';
+import PropTypes from 'prop-types';
 import { getRoverManifest } from '../../API';
 import { ImgBK } from '../../Components/MarsRovers/styles';
 
@@ -58,3 +59,36 @@ export default class MarsRoversIndex extends Component {
     );
   }
 }
+
+MarsRoversIndex.defaultProps = {
+  manifest: {
+    curiosity: {},
+    spirit: {},
+    opportunity: {},
+  },
+};
+MarsRoversIndex.propTypes = {
+  manifest: PropTypes.shape({
+    curiosity: PropTypes.shape({
+      name: PropTypes.string,
+      landing_date: PropTypes.string,
+      launch_date: PropTypes.string,
+      max_date: PropTypes.string,
+      max_sol: PropTypes.number,
+    }),
+    spirit: PropTypes.shape({
+      name: PropTypes.string,
+      landing_date: PropTypes.string,
+      launch_date: PropTypes.string,
+      max_date: PropTypes.string,
+      max_sol: PropTypes.number,
+    }),
+    opportunity: PropTypes.shape({
+      name: PropTypes.string,
+      landing_date: PropTypes.string,
+      launch_date: PropTypes.string,
+      max_date: PropTypes.string,
+      max_sol: PropTypes.number,
+    }),
+  }),
+};

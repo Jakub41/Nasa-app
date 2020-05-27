@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import CardComponent from './Card';
@@ -35,3 +36,75 @@ export default function RoversMain({ curiosity, opportunity, spirit }) {
     </Row>
   );
 }
+
+RoversMain.defaultProps = {
+  curiosity: {
+    photo_manifest: {
+      landing_date: '',
+      launch_date: '',
+      max_date: '',
+      max_sol: 0,
+      name: '',
+      status: '',
+      total_photos: 0,
+    },
+  },
+  opportunity: {
+    photo_manifest: {
+      landing_date: '',
+      launch_date: '',
+      max_date: '',
+      max_sol: 0,
+      name: '',
+      status: '',
+      total_photos: 0,
+    },
+  },
+  spirit: {
+    photo_manifest: {
+      landing_date: '',
+      launch_date: '',
+      max_date: '',
+      max_sol: 0,
+      name: '',
+      status: '',
+      total_photos: 0,
+    },
+  },
+};
+
+RoversMain.propTypes = {
+  curiosity: PropTypes.shape({
+    photo_manifest: PropTypes.shape({
+      landing_date: PropTypes.string.isRequired,
+      launch_date: PropTypes.string.isRequired,
+      max_date: PropTypes.string.isRequired,
+      max_sol: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      total_photos: PropTypes.number.isRequired,
+    }),
+  }),
+  opportunity: PropTypes.shape({
+    photo_manifest: PropTypes.shape({
+      landing_date: PropTypes.string.isRequired,
+      launch_date: PropTypes.string.isRequired,
+      max_date: PropTypes.string.isRequired,
+      max_sol: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      total_photos: PropTypes.number.isRequired,
+    }),
+  }),
+  spirit: PropTypes.shape({
+    photo_manifest: PropTypes.shape({
+      landing_date: PropTypes.string.isRequired,
+      launch_date: PropTypes.string.isRequired,
+      max_date: PropTypes.string.isRequired,
+      max_sol: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      total_photos: PropTypes.number.isRequired,
+    }),
+  }),
+};

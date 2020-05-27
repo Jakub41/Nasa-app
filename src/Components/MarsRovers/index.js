@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import RoversMain from './RoversMain';
@@ -28,3 +29,17 @@ export default function MarsRoversIndex({ curiosity, opportunity, spirit, redire
     </JumbotronWrapper>
   );
 }
+
+MarsRoversIndex.defaultProps = {
+  curiosity: {},
+  opportunity: {},
+  redirect: {},
+  spirit: {},
+};
+
+MarsRoversIndex.propTypes = {
+  curiosity: PropTypes.shape({}),
+  opportunity: PropTypes.shape({}),
+  redirect: PropTypes.shape({}),
+  spirit: PropTypes.shape({}),
+};
