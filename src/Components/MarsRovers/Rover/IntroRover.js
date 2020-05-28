@@ -13,7 +13,7 @@ export default function IntroRover({ roverName }) {
         <div className="d-flex align-items-center margin-top">
           <h1>{roverName}</h1>
           <span className="ml-auto">
-            <BadgeWrapper>
+            <BadgeWrapper className="">
               <Link className="text-white" to="/mars-rovers">
                 <div className="badge red">
                   <div className="circle">

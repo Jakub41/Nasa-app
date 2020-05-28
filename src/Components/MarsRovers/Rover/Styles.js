@@ -33,6 +33,9 @@ export const BadgeWrapper = Styled.div`
 	max-width: 900px;
   text-align: center;
   font-family: Space Mono;
+  @media (max-width: 767px) {
+    margin-top: 200px;
+  }
   .badge {
     position: relative;
     margin: 1.5em 3em;
@@ -107,6 +110,8 @@ export const BadgeWrapper = Styled.div`
         top: -4px;
       }
     }
+
+
   }
 
   .red {
