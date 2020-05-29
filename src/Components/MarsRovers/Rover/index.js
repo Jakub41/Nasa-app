@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import Delayed from 'delayed';
 import RoverIntro from './IntroRover';
 import RoversLoader from '../../Loaders/RoversLoader';
+import { BodyWrapper } from './Styles';
 
 export default function Rover(data) {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,8 +18,10 @@ export default function Rover(data) {
   return isLoading ? (
     <RoversLoader />
   ) : (
-    <Container>
-      <RoverIntro roverName={roverName} />
-    </Container>
+    <BodyWrapper>
+      <Container>
+        <RoverIntro roverName={roverName} />
+      </Container>
+    </BodyWrapper>
   );
 }

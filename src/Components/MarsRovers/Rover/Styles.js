@@ -1,6 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 import Styled from '@emotion/styled';
 
+export const BodyWrapper = Styled.div`
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #e0ffff;
+  min-height: 100vh;
+`;
+
 export const JumboTronWrapper = Styled.div`
   .jumbotron-intro {
     background: linear-gradient(to bottom,rgba(193,44,44,0.5) 0%,
@@ -34,7 +43,7 @@ export const BadgeWrapper = Styled.div`
   text-align: center;
   font-family: Space Mono;
   @media (max-width: 767px) {
-    margin-top: 200px;
+    margin-top: 0;
   }
   .badge {
     position: relative;

@@ -17,14 +17,25 @@ export default function CardComponent({
   status,
   totalPhotos,
 }) {
-  const imgRover = () => {
-    if (name === 'Curiosity')
-      return <TopCardImg variant="top" src={ImgCuriosityRover} alt={name} />;
+  // const imgRover = () => {
+  //   if (name === 'Curiosity')
+  //     return <TopCardImg variant="top" src={ImgCuriosityRover} alt={name} />;
 
-    if (name === 'Opportunity')
-      return <TopCardImg variant="top" src={ImgOpportunityRover} alt={name} />;
+  //   if (name === 'Opportunity')
+  //     return <TopCardImg variant="top" src={ImgOpportunityRover} alt={name} />;
 
-    return <TopCardImg variant="top" src={ImgSpiritRover} alt={name} />;
+  //   return <TopCardImg variant="top" src={ImgSpiritRover} alt={name} />;
+  // };
+
+  const roverImgAssign = () => {
+    let roverImg = '';
+
+    if (name === 'Curiosity') return (roverImg = ImgCuriosityRover);
+    if (name === 'Opportunity') return (roverImg = ImgOpportunityRover);
+    if (name === 'Spirit') return (roverImg = ImgSpiritRover);
+
+    console.log('What rover IMG', roverImg);
+    return <TopCardImg variant="top" src={roverImg} alt={name} />;
   };
 
   const history = useHistory();
@@ -39,7 +50,7 @@ export default function CardComponent({
   return (
     <Col md={4} className="mb-5">
       <Card className="border-black mt-3">
-        {imgRover()}
+        {roverImgAssign()}
         <Card.Body>
           <CardHead>
             <Card.Title className="d-flex align-items-center">
