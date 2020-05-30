@@ -16,7 +16,6 @@ export const JumboTronWrapper = Styled.div`
                 rgba(252,176,69,0.5) 100%);
 
     font-weight: 300;
-
     h1 {
       font-family: Nasa;
       font-size: 1.8rem;
@@ -39,7 +38,28 @@ export const JumboTronWrapper = Styled.div`
     }
   }
 
-  .margin-top{}
+  .wrapper-display{
+    display: flex;
+      @media (max-width: 767px) {
+        flex-wrap:wrap
+      }
+  }
+
+  .wrapper-text{
+    order: 1;
+    @media (max-width: 767px) {
+        flex: 0 0 100%
+        order: 2;
+    }
+  }
+
+  .wrapper-icons{
+    order: 2;
+    @media (max-width: 767px) {
+        flex: 0 0 100%
+        order: 1;
+    }
+  }
 `;
 
 export const BadgeWrapper = Styled.div`
@@ -47,9 +67,7 @@ export const BadgeWrapper = Styled.div`
 	max-width: 900px;
   text-align: center;
   font-family: Space Mono;
-  @media (max-width: 767px) {
-    margin-top: 0;
-  }
+
   .badge {
     position: relative;
     margin: 1.5em 3em;
