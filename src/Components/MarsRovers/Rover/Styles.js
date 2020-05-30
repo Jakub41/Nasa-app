@@ -40,24 +40,21 @@ export const JumboTronWrapper = Styled.div`
 
   .wrapper-display{
     display: flex;
+    width:100%;
+    flex-direction:row-reverse
       @media (max-width: 767px) {
         flex-wrap:wrap
       }
   }
-
   .wrapper-text{
-    order: 1;
     @media (max-width: 767px) {
         flex: 0 0 100%
-        order: 2;
     }
   }
 
   .wrapper-icons{
-    order: 2;
     @media (max-width: 767px) {
         flex: 0 0 100%
-        order: 1;
     }
   }
 `;
