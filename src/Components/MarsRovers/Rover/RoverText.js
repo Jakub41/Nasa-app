@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-closing-bracket-location */
 import React from 'react';
+import ShowMoreText from 'react-show-more-text';
 
 export default function RoverText({ roverName }) {
   let roverText = '';
@@ -6,7 +8,7 @@ export default function RoverText({ roverName }) {
   if (roverName === 'Curiosity')
     roverText = `
         Curiosity is a car-sized rover designed to explore the crater Gale on Mars as part of
-        NASA&apos;s Mars Science Laboratory mission (MSL). Curiosity was launched from Cape
+        NASA's Mars Science Laboratory mission (MSL). Curiosity was launched from Cape
         Canaveral on November 26, 2011, at 15:02 UTC and landed on Aeolis Palus
         inside Gale on Mars on August 6, 2012, 05:17 UTC. The Bradbury Landing
         site was less than 2.4 km (1.5 mi) from the center of the rover&apos;s
@@ -24,7 +26,7 @@ export default function RoverText({ roverName }) {
     roverText = `
         Opportunity, also known as MER-B (Mars Exploration Rover – B) or MER-1,
         and nicknamed
-        &quot;Oppy&quot;, is a robotic rover that was active on Mars from 2004 until the middle of
+        "Oppy", is a robotic rover that was active on Mars from 2004 until the middle of
         2018. Launched on July 7, 2003, as part of NASA&apos;s Mars Exploration Rover program, it
         landed in Meridiani Planum on January 25, 2004, three weeks after its twin Spirit (MER-A)
         touched down on the other side of the planet. With a planned 90-sol duration of activity
@@ -38,7 +40,7 @@ export default function RoverText({ roverName }) {
         included the initial 90-sol mission, finding extramartian meteorites such as Heat Shield
         Rock (Meridiani Planum meteorite), and over two years of exploring and studying Victoria
         crater. The rover survived moderate dust storms and in 2011 reached Endeavour crater, which
-        has been described as a &quot;second landing site&quot;. The Opportunity mission is
+        has been described as a "second landing site". The Opportunity mission is
         considered one of NASA&apos;s most successful ventures. Due to the planetary 2018 dust storm
         on Mars, Opportunity ceased communications on June 10 and entered hibernation on June 12,
         2018. It was hoped it would reboot once the weather cleared, but it did not, suggesting
@@ -57,7 +59,7 @@ export default function RoverText({ roverName }) {
         Ground UTC on
         January 4, 2004, three weeks before its twin, Opportunity (MER-B), which landed on the other
         side of the planet. Its name was chosen through a NASA-sponsored student essay competition.
-        The rover became stuck in a &quot;sand trap&quot; in late 2009 at an angle that hampered
+        The rover became stuck in a "sand trap" in late 2009 at an angle that hampered
         recharging of its batteries; its last communication with Earth was sent on March 22, 2010.
         The
         rover completed its planned 90-sol mission. Aided by cleaning events that resulted in more
@@ -70,7 +72,7 @@ export default function RoverText({ roverName }) {
         On May 1,
         2009 (5 years, 3 months, 27 Earth days after landing; 21.6 times the planned mission
         duration), Spirit became stuck in soft sand. This was not the first of the mission&apos;s
-        &quot;embedding events&quot; and for the following eight months NASA carefully analyzed the
+        "embedding events" and for the following eight months NASA carefully analyzed the
         situation, running Earth-based theoretical and practical simulations,
         and finally programming
         the rover to make extrication drives in an attempt to free itself. These efforts continued
@@ -85,7 +87,17 @@ export default function RoverText({ roverName }) {
         NASA headquarters shortly thereafter. The Jet Propulsion Laboratory (JPL), a division of the
         California Institute of Technology in Pasadena, manages the Mars Exploration
         Rover project for
-        NASA&apos;s Office of Space Science, Washington.`;
+        NASA's Office of Space Science, Washington.`;
 
-  return <p>{roverText}</p>;
+  return (
+    <ShowMoreText /* Default options */
+      lines={3}
+      more="Show more"
+      less="Show less"
+      anchorClass=""
+      expanded={false}
+      width={380}>
+      <p>{roverText}</p>
+    </ShowMoreText>
+  );
 }

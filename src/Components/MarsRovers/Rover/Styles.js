@@ -32,6 +32,11 @@ export const JumboTronWrapper = Styled.div`
       letter-spacing: 0.2rem;
       line-height: 1.5;
     }
+
+    .read-more-button {
+      color: red;
+      cursor: pointer;
+    }
   }
 
   .margin-top{}
