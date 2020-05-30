@@ -3,14 +3,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Rover2 from '../../../Assets/Icons/rover2.png';
 import Rover1 from '../../../Assets/Icons/rover1.png';
+import rovers from './ConstRover';
 
 export default function Links({ roverName: currentRover }) {
-  const rovers = {
-    curiosity: 'Curiosity',
-    opportunity: 'Opportunity',
-    spirit: 'Spirit',
-  };
-
   return Object.keys(rovers).map((key) => {
     if (rovers[key] === currentRover) return null;
 
