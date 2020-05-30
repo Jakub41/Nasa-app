@@ -2,11 +2,9 @@ import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
 import { useHistory } from 'react-router-dom';
-import ImgCuriosityRover from '../../../Assets/Images/curiosity_rover.jpg';
-import ImgOpportunityRover from '../../../Assets/Images/oppoertunity_rover.jpg';
-import ImgSpiritRover from '../../../Assets/Images/spiritRover.jpg';
-import { TopCardImg, Image, CardHead, TextStyle } from './styles';
+import { Image, CardHead, TextStyle } from './styles';
 import Icons from './Icons';
+import RoverImagesCard from './RoverImagesCard';
 
 export default function CardComponent({
   landingDate,
@@ -17,16 +15,6 @@ export default function CardComponent({
   status,
   totalPhotos,
 }) {
-  const roverImgAssign = () => {
-    let roverImg = '';
-
-    if (name === 'Curiosity') return (roverImg = ImgCuriosityRover);
-    if (name === 'Opportunity') return (roverImg = ImgOpportunityRover);
-    if (name === 'Spirit') return (roverImg = ImgSpiritRover);
-
-    return roverImg;
-  };
-
   const history = useHistory();
 
   const redirectToRoverPage = () => {
@@ -39,7 +27,7 @@ export default function CardComponent({
   return (
     <Col md={4} className="mb-5">
       <Card className="border-black mt-3">
-        <TopCardImg variant="top" src={roverImgAssign()} alt={name} />;
+        <RoverImagesCard name={name} />
         <Card.Body>
           <CardHead>
             <Card.Title className="d-flex align-items-center">

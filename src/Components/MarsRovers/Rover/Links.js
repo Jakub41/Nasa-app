@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rover2 from '../../../Assets/Icons/rover2.png';
+import Rover1 from '../../../Assets/Icons/rover1.png';
 
 export default function Links({ roverName: currentRover }) {
   const rovers = {
@@ -15,6 +16,12 @@ export default function Links({ roverName: currentRover }) {
 
     const roverName = rovers[key];
 
+    let roverImg = '';
+
+    if (roverName === 'Curiosity') roverImg = Rover1;
+    if (roverName === 'Opportunity') roverImg = Rover2;
+    if (roverName === 'Spirit') roverImg = Rover1;
+
     return (
       <Link
         key={key}
@@ -25,7 +32,7 @@ export default function Links({ roverName: currentRover }) {
         }}>
         <div className="badge red">
           <div className="circle">
-            <img src={Rover2} alt="rover-img" />
+            <img src={roverImg} alt="rover-img" />
           </div>
           <div className="ribbon">
             <span>{roverName}</span>
