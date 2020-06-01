@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
+import Delayed from 'delayed';
+import RoverIntro from './IntroRover';
+import RoversLoader from '../../Loaders/RoversLoader';
+import { BodyWrapper } from './Styles';
 
 export default function Rover(data) {
-  console.log('ROVER NAME', data.location.state.roverName);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    Delayed.delay(() => {
+      setIsLoading(false);
+    }, 3000);
+  });
 
   const roverName = `${data.location.state.roverName}`;
-  return (
-    <Container>
-      <h1>{roverName}</h1>
-    </Container>
+  return isLoading ? (
+    <RoversLoader />
+  ) : (
+    <BodyWrapper>
+      <Container>
+        <RoverIntro roverName={roverName} />
+      </Container>
+    </BodyWrapper>
   );
 }

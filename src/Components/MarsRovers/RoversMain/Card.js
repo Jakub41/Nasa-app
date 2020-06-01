@@ -2,11 +2,9 @@ import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
 import { useHistory } from 'react-router-dom';
-import ImgCuriosityRover from '../../../Assets/Images/curiosity_rover.jpg';
-import ImgOpportunityRover from '../../../Assets/Images/oppoertunity_rover.jpg';
-import ImgSpiritRover from '../../../Assets/Images/spiritRover.jpg';
-import { TopCardImg, Image, CardHead, TextStyle } from './styles';
+import { Image, CardHead, TextStyle } from './styles';
 import Icons from './Icons';
+import RoverImagesCard from './RoverImagesCard';
 
 export default function CardComponent({
   landingDate,
@@ -17,26 +15,19 @@ export default function CardComponent({
   status,
   totalPhotos,
 }) {
-  const imgRover = () => {
-    if (name === 'Curiosity')
-      return <TopCardImg variant="top" src={ImgCuriosityRover} alt={name} />;
-
-    if (name === 'Opportunity')
-      return <TopCardImg variant="top" src={ImgOpportunityRover} alt={name} />;
-
-    return <TopCardImg variant="top" src={ImgSpiritRover} alt={name} />;
-  };
-
   const history = useHistory();
 
   const redirectToRoverPage = () => {
-    return history.push({ pathname: `/mars-rovers/rover/${name}`, state: { roverName: name } });
+    return history.push({
+      pathname: `/mars-rovers/rover/${name}`,
+      state: { roverName: name },
+    });
   };
 
   return (
     <Col md={4} className="mb-5">
       <Card className="border-black mt-3">
-        {imgRover()}
+        <RoverImagesCard name={name} />
         <Card.Body>
           <CardHead>
             <Card.Title className="d-flex align-items-center">
@@ -82,7 +73,7 @@ export default function CardComponent({
               <TextStyle className="ml-5">{totalPhotos}</TextStyle>
             </Card.Text>
           </Card.Body>
-          <Button variant="success" onClick={() => redirectToRoverPage()}>
+          <Button variant="success" onClick={redirectToRoverPage}>
             ENTER
           </Button>
         </Card.Body>

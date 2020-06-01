@@ -50,6 +50,8 @@ export const JumbotronWrapper = Styled.div`
       line-height: 1.5;
     }
 
+
+
     @media(max-width: 796px) {
       height: 60vh;
       p {

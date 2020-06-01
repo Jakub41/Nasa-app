@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import WeatherMars from '../../Components/Mars';
 import { MarsWeatherData } from '../../API/MarsWeatherData';
-import MarsLoader from '../../Components/MarsLoader';
+import MarsLoader from '../../Components/Loaders/MarsLoader';
 import NotifyError from '../../Util/Error';
 
 export default class WeatherMarsIndex extends Component {
