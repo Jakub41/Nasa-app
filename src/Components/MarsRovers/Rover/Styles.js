@@ -39,22 +39,22 @@ export const JumboTronWrapper = Styled.div`
   }
 
   .wrapper-display{
-    display: flex;
+    display:flex;
     width:100%;
-    flex-direction:row-reverse
-      @media (max-width: 767px) {
-        flex-wrap:wrap
-      }
+    flex-wrap:wrap;
+    @media (max-width: 1000px) {
+      flex-direction:column-reverse;
+    }
   }
   .wrapper-text{
-    @media (max-width: 767px) {
-        flex: 0 0 100%
+    @media (max-width: 1000px) {
+        width:100%;
     }
   }
 
   .wrapper-icons{
-    @media (max-width: 767px) {
-        flex: 0 0 100%
+    @media (max-width: 1000px) {
+        width:100%;
     }
   }
 `;
