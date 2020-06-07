@@ -4,6 +4,7 @@ import Delayed from 'delayed';
 import RoverIntro from './IntroRover';
 import RoversLoader from '../../Loaders/RoversLoader';
 import { BodyWrapper } from './Styles';
+import RoverCamerasIndex from './RoverCameras';
 
 export default function Rover(data) {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +22,7 @@ export default function Rover(data) {
     <BodyWrapper>
       <Container>
         <RoverIntro roverName={roverName} />
+        <RoverCamerasIndex roverName={roverName} />
       </Container>
     </BodyWrapper>
   );

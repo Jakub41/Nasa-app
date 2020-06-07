@@ -36,3 +36,14 @@ export const checkSelected = (isSelected, actual, value, isMetric) => {
 
   return isEmpty(isSelected) ? isSelected[value] : actual[value];
 };
+
+export const CurrentDateBefore = () => {
+  let today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0') - 1;
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+  const yyyy = today.getFullYear();
+
+  today = `${yyyy}-${mm}-${dd}`;
+
+  return today;
+};
