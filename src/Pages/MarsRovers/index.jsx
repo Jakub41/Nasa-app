@@ -20,6 +20,7 @@ export default class MarsRoversIndex extends Component {
         spirit: {},
         opportunity: {},
       },
+      loadingTimeoutId: 0,
     };
   }
 
@@ -31,7 +32,7 @@ export default class MarsRoversIndex extends Component {
     if (!curiosityManifest || !spiritManifest || !opportunityManifest)
       this.setState({ error: true });
 
-    Delayed.delay(() => {
+    const loadingTimeoutId = Delayed.delay(() => {
       this.setState({ isLoading: false });
     }, 3000);
 
@@ -41,7 +42,13 @@ export default class MarsRoversIndex extends Component {
         spirit: spiritManifest,
         opportunity: opportunityManifest,
       },
+      loadingTimeoutId,
     });
+  };
+
+  componentWillUnmount = () => {
+    const { loadingTimeoutId } = this.state;
+    clearTimeout(loadingTimeoutId);
   };
 
   render() {

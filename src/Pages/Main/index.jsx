@@ -16,6 +16,7 @@ export default class Main extends Component {
       isLoading: true,
       error: false,
       redirecting: false,
+      loadingTimeoutId: 0,
     };
   }
 
@@ -24,13 +25,19 @@ export default class Main extends Component {
 
     if (!podData) this.setState({ error: true });
 
-    Delayed.delay(() => {
+    const loadingTimeoutId = Delayed.delay(() => {
       this.setState({ isLoading: false });
     }, 3000);
 
     this.setState({
       podData,
+      loadingTimeoutId,
     });
+  };
+
+  componentWillUnmount = () => {
+    const { loadingTimeoutId } = this.state;
+    clearTimeout(loadingTimeoutId);
   };
 
   redirectToMarsWeather = () => {
