@@ -16,6 +16,7 @@ export default class WeatherMarsIndex extends Component {
       isPrevious: false,
       isLoading: true,
       error: false,
+      loadingTimeoutId: 0,
     };
 
     this.handleIsPrevious = this.handleIsPrevious.bind(this);
@@ -31,14 +32,20 @@ export default class WeatherMarsIndex extends Component {
         error: true,
       });
 
-    setTimeout(() => {
+    const loadingTimeoutId = setTimeout(() => {
       this.setState({ isLoading: false });
     }, 10500);
 
     this.setState({
       wMarsData: data,
       selectedSol: data.length - 1,
+      loadingTimeoutId,
     });
+  };
+
+  componentWillUnmount = () => {
+    const { loadingTimeoutId } = this.state;
+    clearTimeout(loadingTimeoutId);
   };
 
   handleIsPrevious(bool) {
