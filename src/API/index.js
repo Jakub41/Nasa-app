@@ -11,9 +11,9 @@ export const getWeatherMars = NasaApiQuery(() => `${W_MARS_URL}&ver=1.0&api_key=
 export const getRoverManifest = NasaApiQuery((rover) => `${ROVER_MANIFEST}${rover}?&api_key=`);
 
 // GET Pictures of a Rover
-export const getRoverPhotos = NasaApiQuery(
-  (roverName, earthDate, camera) =>
-    `${ROVER}${roverName}/photos?earth_date=${earthDate}&camera=${camera}&api_key=`
+export const getRoverPhotosBySol = NasaApiQuery(
+  (roverName, solNumber, camera) =>
+    `${ROVER}${roverName}/photos?sol=${solNumber}&camera=${camera}&api_key=`
 );
 
 // GET Rover information
