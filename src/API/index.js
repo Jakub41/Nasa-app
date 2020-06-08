@@ -12,8 +12,8 @@ export const getRoverManifest = NasaApiQuery((rover) => `${ROVER_MANIFEST}${rove
 
 // GET Pictures of a Rover
 export const getRoverPhotosBySol = NasaApiQuery(
-  (roverName, solNumber, camera) =>
-    `${ROVER}${roverName}/photos?sol=${solNumber}&camera=${camera}&api_key=`
+  (roverName, solNumber, camera, pageNumber) =>
+    `${ROVER}${roverName}/photos?sol=${solNumber}&camera=${camera}&page=${pageNumber}&api_key=`
 );
 
 // GET Rover information
