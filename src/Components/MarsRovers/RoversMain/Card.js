@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Image, CardHead, TextStyle } from './styles';
 import Icons from './Icons';
 import RoverImagesCard from './RoverImagesCard';
@@ -15,15 +15,6 @@ export default function CardComponent({
   status,
   totalPhotos,
 }) {
-  const history = useHistory();
-
-  const redirectToRoverPage = () => {
-    return history.push({
-      pathname: `/mars-rovers/rover/${name}`,
-      state: { roverName: name },
-    });
-  };
-
   return (
     <Col md={4} className="mb-5">
       <Card className="border-black mt-3">
@@ -73,9 +64,9 @@ export default function CardComponent({
               <TextStyle className="ml-5">{totalPhotos}</TextStyle>
             </Card.Text>
           </Card.Body>
-          <Button variant="success" onClick={redirectToRoverPage}>
-            ENTER
-          </Button>
+          <Link to={{ pathname: `/mars-rovers/rover/${name}`, maxSol }}>
+            <Button variant="success">ENTER</Button>
+          </Link>
         </Card.Body>
       </Card>
     </Col>

@@ -10,7 +10,7 @@ function Routes() {
     <>
       <Route path="/mars-weather" component={MarsWeather} exact />
       <Route path="/mars-rovers" component={MarsRovers} exact />
-      <Route path="/mars-rovers/rover" component={Rover} />
+      <Route path="/mars-rovers/rover/:roverName" component={Rover} exact />
     </>
   );
 }
