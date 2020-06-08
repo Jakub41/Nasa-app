@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import Delayed from 'delayed';
 import PropTypes from 'prop-types';
 import { getRoverManifest } from '../../API';
 import { ImgBK } from '../../Components/MarsRovers/styles';
 import NotifyError from '../../Util/Error';
 import RoversLoader from '../../Components/Loaders/RoversLoader';
+import createTimeoutUnsubscriber from '../../Util/AutoTimeoutUnsubscriber';
 
 import MarsRovers from '../../Components/MarsRovers';
+
+const autoTimeoutUnsubscriber = createTimeoutUnsubscriber();
 
 export default class MarsRoversIndex extends Component {
   constructor(props) {
@@ -20,35 +22,42 @@ export default class MarsRoversIndex extends Component {
         spirit: {},
         opportunity: {},
       },
-      loadingTimeoutId: 0,
     };
   }
 
   componentDidMount = async () => {
-    const curiosityManifest = await getRoverManifest('curiosity');
-    const spiritManifest = await getRoverManifest('spirit');
-    const opportunityManifest = await getRoverManifest('opportunity');
+    try {
+      const curiosityManifest = await getRoverManifest('curiosity');
+      const spiritManifest = await getRoverManifest('spirit');
+      const opportunityManifest = await getRoverManifest('opportunity');
 
-    if (!curiosityManifest || !spiritManifest || !opportunityManifest)
-      this.setState({ error: true });
+      if (!curiosityManifest || !spiritManifest || !opportunityManifest)
+        this.setState({ error: true });
 
-    const loadingTimeoutId = Delayed.delay(() => {
-      this.setState({ isLoading: false });
-    }, 3000);
+      const pM = 'photo_manifest';
 
-    this.setState({
-      manifest: {
-        curiosity: curiosityManifest,
-        spirit: spiritManifest,
-        opportunity: opportunityManifest,
-      },
-      loadingTimeoutId,
-    });
+      if (!(pM in curiosityManifest) || !(pM in spiritManifest) || !(pM in opportunityManifest))
+        this.setState({ error: true });
+
+      autoTimeoutUnsubscriber(() => {
+        this.setState({
+          isLoading: false,
+          manifest: {
+            curiosity: curiosityManifest,
+            spirit: spiritManifest,
+            opportunity: opportunityManifest,
+          },
+        });
+      }, 3000);
+    } catch {
+      this.setState({
+        error: true,
+      });
+    }
   };
 
   componentWillUnmount = () => {
-    const { loadingTimeoutId } = this.state;
-    clearTimeout(loadingTimeoutId);
+    autoTimeoutUnsubscriber();
   };
 
   render() {
