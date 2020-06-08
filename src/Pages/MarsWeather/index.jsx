@@ -4,6 +4,9 @@ import WeatherMars from '../../Components/Mars';
 import { MarsWeatherData } from '../../API/MarsWeatherData';
 import MarsLoader from '../../Components/Loaders/MarsLoader';
 import NotifyError from '../../Util/Error';
+import createTimeoutUnsubscriber from '../../Util/AutoTimeoutUnsubscriber';
+
+const autoTimeoutUnsubscriber = createTimeoutUnsubscriber();
 
 export default class WeatherMarsIndex extends Component {
   constructor(props) {
@@ -16,7 +19,6 @@ export default class WeatherMarsIndex extends Component {
       isPrevious: false,
       isLoading: true,
       error: false,
-      loadingTimeoutId: 0,
     };
 
     this.handleIsPrevious = this.handleIsPrevious.bind(this);
@@ -25,27 +27,30 @@ export default class WeatherMarsIndex extends Component {
   }
 
   componentDidMount = async () => {
-    const data = await MarsWeatherData();
+    try {
+      const data = await MarsWeatherData();
 
-    if (!data)
+      if (!data)
+        this.setState({
+          error: true,
+        });
+
+      autoTimeoutUnsubscriber(() => {
+        this.setState({
+          isLoading: false,
+          wMarsData: data,
+          selectedSol: data.length - 1,
+        });
+      }, 10500);
+    } catch {
       this.setState({
         error: true,
       });
-
-    const loadingTimeoutId = setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 10500);
-
-    this.setState({
-      wMarsData: data,
-      selectedSol: data.length - 1,
-      loadingTimeoutId,
-    });
+    }
   };
 
   componentWillUnmount = () => {
-    const { loadingTimeoutId } = this.state;
-    clearTimeout(loadingTimeoutId);
+    autoTimeoutUnsubscriber();
   };
 
   handleIsPrevious(bool) {
