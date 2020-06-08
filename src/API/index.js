@@ -1,5 +1,5 @@
 import NasaApiQuery from './NasaApiQuery';
-import { POD_URL, W_MARS_URL, ROVER_MANIFEST, ROVER_PHOTOS } from '../Config';
+import { POD_URL, W_MARS_URL, ROVER_MANIFEST, ROVER } from '../Config';
 
 // GET Picture of the day
 export const getPod = NasaApiQuery(() => `${POD_URL}&api_key=`);
@@ -13,7 +13,10 @@ export const getRoverManifest = NasaApiQuery((rover) => `${ROVER_MANIFEST}${rove
 // GET Pictures of a Rover
 export const getRoverPhotos = NasaApiQuery(
   (roverName, earthDate, camera) =>
-    `${ROVER_PHOTOS}${roverName}/photos?earth_date=${earthDate}&camera=${camera}&api_key=`
+    `${ROVER}${roverName}/photos?earth_date=${earthDate}&camera=${camera}&api_key=`
 );
+
+// GET Rover information
+export const getRoverInfo = NasaApiQuery((roverName) => `${ROVER}${roverName}?api_key=`);
 
 // console.log(getRoverPhotos('curiosity', '2020-6-1', 'NAVCAM'));
