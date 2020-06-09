@@ -15,11 +15,7 @@ export default class MarsRoversIndex extends Component {
     this.state = {
       isLoading: true,
       error: false,
-      manifest: {
-        curiosity: {},
-        spirit: {},
-        opportunity: {},
-      },
+      rovers: [],
     };
   }
 
@@ -33,19 +29,13 @@ export default class MarsRoversIndex extends Component {
         ],
         3000
       ).then(
-        (response) => {
-          if (response.some((rover) => rover.photo_manifest === undefined))
+        (rovers) => {
+          if (rovers.some((rover) => rover.photo_manifest === undefined))
             this.setState({ error: true });
-
-          const [curiosity, spirit, opportunity] = response;
 
           this.setState({
             isLoading: false,
-            manifest: {
-              curiosity,
-              spirit,
-              opportunity,
-            },
+            rovers,
           });
         },
         (error) => {
@@ -61,11 +51,7 @@ export default class MarsRoversIndex extends Component {
   };
 
   render() {
-    const {
-      isLoading,
-      error,
-      manifest: { curiosity, spirit, opportunity },
-    } = this.state;
+    const { isLoading, error, rovers } = this.state;
 
     return isLoading ? (
       <RoversLoader />
@@ -76,7 +62,7 @@ export default class MarsRoversIndex extends Component {
         ) : (
           <ImgBK>
             <Container>
-              <MarsRovers curiosity={curiosity} spirit={spirit} opportunity={opportunity} />
+              <MarsRovers rovers={rovers} />
             </Container>
           </ImgBK>
         )}
