@@ -11,7 +11,7 @@ const NasaApiQuery = (urlGenerator, method = 'GET') => async (...params) => {
       }),
     };
 
-    const response = await fetch(url + API_KEY, request);
+    const response = await fetch(`${url}&api_key=${API_KEY}`, request);
 
     if (!response.ok) throw new Error();
 
