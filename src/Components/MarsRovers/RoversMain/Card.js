@@ -21,26 +21,26 @@ export default function CardComponent({
         <RoverImagesCard name={name} />
         <Card.Body>
           <CardHead>
-            <Card.Title className="d-flex align-items-center">
+            <Card.Title className="d-flex justify-content-center align-items-center">
               {name}
-              <span className="ml-auto">
-                {status === 'active' ? (
-                  <>
-                    <Icons.StatusActive data-tip data-for="active" />
-                    <ReactTooltip id="active" place="top" effect="solid">
-                      Status Active
-                    </ReactTooltip>
-                  </>
-                ) : (
-                  <>
-                    <Icons.StatusNotActive data-tip data-for="not-active" />
-                    <ReactTooltip id="not-active" place="top" effect="solid">
-                      Status Not-Active
-                    </ReactTooltip>
-                  </>
-                )}
-              </span>
             </Card.Title>
+            <div className="ml-auto d-flex justify-content-center align-items-center">
+              {status === 'active' ? (
+                <>
+                  <Icons.StatusActive data-tip data-for="active" />
+                  <ReactTooltip id="active" place="top" effect="solid">
+                    Status Active
+                  </ReactTooltip>
+                </>
+              ) : (
+                <>
+                  <Icons.StatusNotActive data-tip data-for="not-active" />
+                  <ReactTooltip id="not-active" place="top" effect="solid">
+                    Status Not-Active
+                  </ReactTooltip>
+                </>
+              )}
+            </div>
           </CardHead>
           <Card.Body>
             <Card.Text className="d-flex align-items-center">
@@ -64,7 +64,7 @@ export default function CardComponent({
               <TextStyle className="ml-5">{totalPhotos}</TextStyle>
             </Card.Text>
           </Card.Body>
-          <Link to={{ pathname: `/mars-rovers/rover/${name}`, maxSol }}>
+          <Link to={{ pathname: `/mars-rovers/rover/${name.toString()}`, maxSol }}>
             <Button variant="success">ENTER</Button>
           </Link>
         </Card.Body>
