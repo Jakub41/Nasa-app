@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Row } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import CardComponent from './Card';
 
 export default function RoversMain({ curiosity, opportunity, spirit }) {
@@ -10,7 +11,7 @@ export default function RoversMain({ curiosity, opportunity, spirit }) {
         const manifest = rover.photo_manifest;
         return (
           <CardComponent
-            key={`CardComponent.${rover}`}
+            key={uuidv4()}
             landingDate={manifest.landing_date}
             launchDate={manifest.launch_date}
             name={manifest.name}
@@ -25,7 +26,7 @@ export default function RoversMain({ curiosity, opportunity, spirit }) {
   );
 }
 
-const defaultRoverProps = {
+const defaultRoverManifestProps = {
   photo_manifest: {
     landing_date: '',
     launch_date: '',
@@ -38,21 +39,27 @@ const defaultRoverProps = {
 };
 
 RoversMain.defaultProps = {
-  curiosity: defaultRoverProps,
-  opportunity: defaultRoverProps,
-  spirit: defaultRoverProps,
+  curiosity: defaultRoverManifestProps,
+  opportunity: defaultRoverManifestProps,
+  spirit: defaultRoverManifestProps,
 };
 
-RoversMain.propTypes = PropTypes.objectOf(
-  PropTypes.shape({
-    photo_manifest: PropTypes.shape({
-      landing_date: PropTypes.string.isRequired,
-      launch_date: PropTypes.string.isRequired,
-      max_date: PropTypes.string.isRequired,
-      max_sol: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      status: PropTypes.string.isRequired,
-      total_photos: PropTypes.number.isRequired,
-    }),
-  })
-);
+const roverManifestPropType = PropTypes.shape({
+  photo_manifest: PropTypes.shape({
+    landing_date: PropTypes.string.isRequired,
+    launch_date: PropTypes.string.isRequired,
+    max_date: PropTypes.string.isRequired,
+    max_sol: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    photos: PropTypes.array,
+    status: PropTypes.string.isRequired,
+    total_photos: PropTypes.number.isRequired,
+  }),
+  success: PropTypes.bool,
+});
+
+RoversMain.propTypes = {
+  curiosity: roverManifestPropType,
+  opportunity: roverManifestPropType,
+  spirit: roverManifestPropType,
+};
