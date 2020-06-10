@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import Delayed from 'delayed';
 import PropTypes from 'prop-types';
+import Delayed from 'delayed';
 import { getRoverManifest } from '../../API';
 import { ImgBK } from '../../Components/MarsRovers/styles';
 import NotifyError from '../../Util/Error';
 import RoversLoader from '../../Components/Loaders/RoversLoader';
-
 import MarsRovers from '../../Components/MarsRovers';
+import { savePhotosManifest } from '../../Components/MarsRovers/Rover/RoverCameras/PhotosDataFetch';
 
 export default class MarsRoversIndex extends Component {
   constructor(props) {
@@ -24,24 +24,38 @@ export default class MarsRoversIndex extends Component {
   }
 
   componentDidMount = async () => {
-    const curiosityManifest = await getRoverManifest('curiosity');
-    const spiritManifest = await getRoverManifest('spirit');
-    const opportunityManifest = await getRoverManifest('opportunity');
+    try {
+      const curiosityManifest = await getRoverManifest('curiosity');
+      const spiritManifest = await getRoverManifest('spirit');
+      const opportunityManifest = await getRoverManifest('opportunity');
 
-    if (!curiosityManifest || !spiritManifest || !opportunityManifest)
+      if (!curiosityManifest || !spiritManifest || !opportunityManifest)
+        this.setState({ error: true });
+
+      const pM = 'photo_manifest';
+
+      if (!(pM in curiosityManifest) || !(pM in spiritManifest) || !(pM in opportunityManifest))
+        this.setState({ error: true });
+
+      savePhotosManifest(curiosityManifest);
+      savePhotosManifest(opportunityManifest);
+      savePhotosManifest(spiritManifest);
+
+      this.setState({
+        isLoading: false,
+        manifest: {
+          curiosity: curiosityManifest,
+          spirit: spiritManifest,
+          opportunity: opportunityManifest,
+        },
+      });
+
+      Delayed.delay(() => {
+        this.setState({ isLoading: false });
+      }, 3000);
+    } catch {
       this.setState({ error: true });
-
-    Delayed.delay(() => {
-      this.setState({ isLoading: false });
-    }, 3000);
-
-    this.setState({
-      manifest: {
-        curiosity: curiosityManifest,
-        spirit: spiritManifest,
-        opportunity: opportunityManifest,
-      },
-    });
+    }
   };
 
   render() {

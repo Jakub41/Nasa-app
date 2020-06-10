@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import RoverCamerasView from './RoverCamerasView';
 import RoverCamerasConst from './RoverCamerasConst';
+import RoverPhotos from './RoverPhotos';
+import { WrapperAlignedToCenter, RoverCamerasIndexWrapper, TopLevelTitle } from './styles';
 
-export default function RoverCamerasIndex({ roverName }) {
+export default function RoverCamerasIndex({ maxSol, roverName, setWholePageIsLoading }) {
   const initialCamera = RoverCamerasConst[roverName.toLowerCase()][0];
   const [camera, setCamera] = useState(initialCamera);
-
   return (
-    <div>
-      <h1>Photos taken by {roverName}</h1>
+    <RoverCamerasIndexWrapper>
+      <WrapperAlignedToCenter>
+        <TopLevelTitle>Photos taken by {roverName}</TopLevelTitle>
+      </WrapperAlignedToCenter>
       <hr />
       <RoverCamerasView
         camera={camera}
@@ -16,6 +19,14 @@ export default function RoverCamerasIndex({ roverName }) {
         roverCameras={RoverCamerasConst[roverName.toLowerCase()]}
         roverName={roverName}
       />
-    </div>
+      <hr />
+      <RoverPhotos
+        camera={camera}
+        maxSol={maxSol}
+        roverName={roverName}
+        setWholePageIsLoading={setWholePageIsLoading}
+      />
+      <hr />
+    </RoverCamerasIndexWrapper>
   );
 }
