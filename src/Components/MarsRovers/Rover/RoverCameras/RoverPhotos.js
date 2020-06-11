@@ -25,7 +25,6 @@ export default function RoverPhotos({ camera, roverName, setWholePageIsLoading }
     setIsFetchingPhotos(true);
     setHasError(false);
     async function fetchAndStoreNewSetOfPhotos() {
-      console.log('Am I working???');
       try {
         const hasChangedPhotoGallery =
           lastCameraShown !== camera || lastRoverNameShown !== roverName;
@@ -56,7 +55,6 @@ export default function RoverPhotos({ camera, roverName, setWholePageIsLoading }
         setHasError(true);
         setWholePageIsLoading(false);
         setIsFetchingPhotos(false);
-        console.log('ERROR', error);
       }
     }
     fetchAndStoreNewSetOfPhotos();
