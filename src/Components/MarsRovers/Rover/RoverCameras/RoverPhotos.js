@@ -24,7 +24,7 @@ export default function RoverPhotos({ camera, roverName, setWholePageIsLoading }
   useEffect(() => {
     setIsFetchingPhotos(true);
     setHasError(false);
-    async function fetchAndStoreNewSetOfPhotos() {
+    (async () => {
       try {
         const hasChangedPhotoGallery =
           lastCameraShown !== camera || lastRoverNameShown !== roverName;
@@ -56,8 +56,7 @@ export default function RoverPhotos({ camera, roverName, setWholePageIsLoading }
         setWholePageIsLoading(false);
         setIsFetchingPhotos(false);
       }
-    }
-    fetchAndStoreNewSetOfPhotos();
+    })();
   }, [camera, roverName, setWholePageIsLoading, activePageNumber]);
 
   const totalItemsCount = numberOfPagesInPagination[roverName][camera] * numberOfPhotosPerPage;
