@@ -5,11 +5,9 @@ import { getRoverManifest } from '../../API';
 import { ImgBK } from '../../Components/MarsRovers/styles';
 import NotifyError from '../../Util/Error';
 import RoversLoader from '../../Components/Loaders/RoversLoader';
-import createTimeoutUnsubscriber from '../../Util/AutoTimeoutUnsubscriber';
+import { PromiseWithTimeout } from '../../Util/AutoTimeoutUnsubscriber';
 
 import MarsRovers from '../../Components/MarsRovers';
-
-const autoTimeoutUnsubscriber = createTimeoutUnsubscriber();
 
 export default class MarsRoversIndex extends Component {
   constructor(props) {
@@ -17,38 +15,34 @@ export default class MarsRoversIndex extends Component {
     this.state = {
       isLoading: true,
       error: false,
-      manifest: {
-        curiosity: {},
-        spirit: {},
-        opportunity: {},
-      },
+      rovers: [],
     };
   }
 
   componentDidMount = async () => {
     try {
-      const curiosityManifest = await getRoverManifest('curiosity');
-      const spiritManifest = await getRoverManifest('spirit');
-      const opportunityManifest = await getRoverManifest('opportunity');
+      await PromiseWithTimeout(
+        [
+          getRoverManifest('curiosity'),
+          getRoverManifest('spirit'),
+          getRoverManifest('opportunity'),
+        ],
+        3000
+      ).then(
+        (rovers) => {
+          if (rovers.some((rover) => rover.photo_manifest === undefined))
+            this.setState({ error: true });
 
-      if (!curiosityManifest || !spiritManifest || !opportunityManifest)
-        this.setState({ error: true });
-
-      const pM = 'photo_manifest';
-
-      if (!(pM in curiosityManifest) || !(pM in spiritManifest) || !(pM in opportunityManifest))
-        this.setState({ error: true });
-
-      autoTimeoutUnsubscriber(() => {
-        this.setState({
-          isLoading: false,
-          manifest: {
-            curiosity: curiosityManifest,
-            spirit: spiritManifest,
-            opportunity: opportunityManifest,
-          },
-        });
-      }, 3000);
+          this.setState({
+            isLoading: false,
+            rovers,
+          });
+        },
+        (error) => {
+          console.error('Error fetching Rover Manifests: ', error);
+          this.setState({ error: true });
+        }
+      );
     } catch {
       this.setState({
         error: true,
@@ -56,16 +50,8 @@ export default class MarsRoversIndex extends Component {
     }
   };
 
-  componentWillUnmount = () => {
-    autoTimeoutUnsubscriber();
-  };
-
   render() {
-    const {
-      isLoading,
-      error,
-      manifest: { curiosity, spirit, opportunity },
-    } = this.state;
+    const { isLoading, error, rovers } = this.state;
 
     return isLoading ? (
       <RoversLoader />
@@ -76,7 +62,7 @@ export default class MarsRoversIndex extends Component {
         ) : (
           <ImgBK>
             <Container>
-              <MarsRovers curiosity={curiosity} spirit={spirit} opportunity={opportunity} />
+              <MarsRovers rovers={rovers} />
             </Container>
           </ImgBK>
         )}
