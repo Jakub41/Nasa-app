@@ -2,11 +2,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import Delayed from 'delayed';
 import { getPod } from '../../API';
 import PodCard from '../../Components/Pod';
 import Loader from '../../Components/Loaders/Loader';
 import NotifyError from '../../Util/Error';
+import createTimeoutUnsubscriber from '../../Util/AutoTimeoutUnsubscriber';
+
+const autoTimeoutUnsubscriber = createTimeoutUnsubscriber();
 
 export default class Main extends Component {
   constructor(props) {
@@ -20,18 +22,27 @@ export default class Main extends Component {
   }
 
   componentDidMount = async () => {
-    const podData = await getPod();
+    try {
+      const podData = await getPod();
 
-    if (!podData) this.setState({ error: true });
+      if (!podData) this.setState({ error: true });
 
-    Delayed.delay(() => {
-      this.setState({ isLoading: false });
-    }, 3000);
-
-    this.setState({
-      podData,
-    });
+      autoTimeoutUnsubscriber(() => {
+        this.setState({
+          isLoading: false,
+          podData,
+        });
+      }, 3000);
+    } catch {
+      this.setState({
+        error: true,
+      });
+    }
   };
+
+  componentWillUnmount() {
+    autoTimeoutUnsubscriber();
+  }
 
   redirectToMarsWeather = () => {
     this.setState({ redirecting: true });

@@ -16,7 +16,7 @@ import {
 
 const PodCard = (props) => {
   const {
-    data: { title, url, hdurl, explanation, date, copyright, mediaType },
+    data: { title, url, hdurl, explanation, date, copyright, media_type: mediaType },
     redirect,
   } = props;
 

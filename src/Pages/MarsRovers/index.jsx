@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Delayed from 'delayed';
 import { getRoverManifest } from '../../API';
 import { ImgBK } from '../../Components/MarsRovers/styles';
 import NotifyError from '../../Util/Error';
 import RoversLoader from '../../Components/Loaders/RoversLoader';
+import createTimeoutUnsubscriber from '../../Util/AutoTimeoutUnsubscriber';
 import MarsRovers from '../../Components/MarsRovers';
 import { savePhotosManifest } from '../../Components/MarsRovers/Rover/RoverCameras/PhotosDataFetch';
+
+const autoTimeoutUnsubscriber = createTimeoutUnsubscriber();
 
 export default class MarsRoversIndex extends Component {
   constructor(props) {
@@ -41,21 +43,25 @@ export default class MarsRoversIndex extends Component {
       savePhotosManifest(opportunityManifest);
       savePhotosManifest(spiritManifest);
 
-      this.setState({
-        isLoading: false,
-        manifest: {
-          curiosity: curiosityManifest,
-          spirit: spiritManifest,
-          opportunity: opportunityManifest,
-        },
-      });
-
-      Delayed.delay(() => {
-        this.setState({ isLoading: false });
+      autoTimeoutUnsubscriber(() => {
+        this.setState({
+          isLoading: false,
+          manifest: {
+            curiosity: curiosityManifest,
+            spirit: spiritManifest,
+            opportunity: opportunityManifest,
+          },
+        });
       }, 3000);
     } catch {
-      this.setState({ error: true });
+      this.setState({
+        error: true,
+      });
     }
+  };
+
+  componentWillUnmount = () => {
+    autoTimeoutUnsubscriber();
   };
 
   render() {
