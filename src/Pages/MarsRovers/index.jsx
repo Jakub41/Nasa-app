@@ -33,7 +33,7 @@ export default class MarsRoversIndex extends Component {
         (rovers) => {
           rovers.forEach(savePhotosManifest);
           if (rovers.some((rover) => rover.photo_manifest === undefined))
-            this.setState({ error: true });
+            this.setState({ error: true, isLoading: false });
 
           this.setState({
             isLoading: false,
