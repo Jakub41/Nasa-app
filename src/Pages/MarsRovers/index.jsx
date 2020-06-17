@@ -21,22 +21,17 @@ export default class MarsRoversIndex extends Component {
   }
 
   componentDidMount = async () => {
-    let curiosityManifest;
-    let opportunityManifest;
-    let spiritManifest;
     try {
       await PromiseWithTimeout(
         [
-          (curiosityManifest = getRoverManifest('curiosity')),
-          (opportunityManifest = getRoverManifest('opportunity')),
-          (spiritManifest = getRoverManifest('spirit')),
+          getRoverManifest('curiosity'),
+          getRoverManifest('opportunity'),
+          getRoverManifest('spirit'),
         ],
         3000
       ).then(
-        savePhotosManifest(curiosityManifest),
-        savePhotosManifest(opportunityManifest),
-        savePhotosManifest(spiritManifest),
         (rovers) => {
+          rovers.forEach(savePhotosManifest);
           if (rovers.some((rover) => rover.photo_manifest === undefined))
             this.setState({ error: true });
 
@@ -47,7 +42,7 @@ export default class MarsRoversIndex extends Component {
         },
         (error) => {
           console.error('Error fetching Rover Manifests: ', error);
-          this.setState({ error: true });
+          this.setState({ error: true, isLoading: false });
         }
       );
     } catch {

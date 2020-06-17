@@ -22,7 +22,7 @@ export default function createNewInstanceOfAutoTimeoutUnsubscribe() {
 
 export function PromiseWithTimeout(promises, timeout) {
   let promise = promises;
-  if (promises instanceof Array) promise = Promise.all(promises);
+  if (promises instanceof Array) promise = Promise.allSettled(promises).then(console.log);
   return Promise.race([promise, throwTimeout(timeout)]);
 }
 
