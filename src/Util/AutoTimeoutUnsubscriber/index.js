@@ -20,9 +20,12 @@ export default function createNewInstanceOfAutoTimeoutUnsubscribe() {
   };
 }
 
-export function PromiseWithTimeout(promises, timeout) {
+export async function PromiseWithTimeout(promises, timeout) {
   let promise = promises;
-  if (promises instanceof Array) promise = Promise.allSettled(promises).then(console.log);
+  if (promises instanceof Array)
+    promise = Promise.allSettled(promises).then((result) =>
+      result.map((settledObject) => settledObject.value)
+    );
   return Promise.race([promise, throwTimeout(timeout)]);
 }
 

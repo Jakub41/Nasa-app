@@ -31,6 +31,7 @@ export default class MarsRoversIndex extends Component {
         3000
       ).then(
         (rovers) => {
+          console.log('Rovers', rovers);
           rovers.forEach(savePhotosManifest);
           if (rovers.some((rover) => rover.photo_manifest === undefined))
             this.setState({ error: true, isLoading: false });
@@ -45,9 +46,11 @@ export default class MarsRoversIndex extends Component {
           this.setState({ error: true, isLoading: false });
         }
       );
-    } catch {
+    } catch (error) {
+      console.error('Error Mars Rover Page: ', error);
       this.setState({
         error: true,
+        isLoading: false,
       });
     }
   };
