@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Row } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import CardComponent from './Card';
 
 export default function RoversMain({ rovers }) {
@@ -8,6 +9,7 @@ export default function RoversMain({ rovers }) {
     <Row>
       {rovers.map((rover) => (
         <CardComponent
+          key={uuidv4()}
           landingDate={rover.photo_manifest.landing_date}
           launchDate={rover.photo_manifest.launch_date}
           name={rover.photo_manifest.name}

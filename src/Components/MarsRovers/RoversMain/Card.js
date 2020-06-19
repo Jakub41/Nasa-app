@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Image, CardHead, TextStyle } from './styles';
 import Icons from './Icons';
 import RoverImagesCard from './RoverImagesCard';
@@ -15,41 +15,32 @@ export default function CardComponent({
   status,
   totalPhotos,
 }) {
-  const history = useHistory();
-
-  const redirectToRoverPage = () => {
-    return history.push({
-      pathname: `/mars-rovers/rover/${name}`,
-      state: { roverName: name },
-    });
-  };
-
   return (
     <Col md={4} className="mb-5">
       <Card className="border-black mt-3">
         <RoverImagesCard name={name} />
         <Card.Body>
           <CardHead>
-            <Card.Title className="d-flex align-items-center">
+            <Card.Title className="d-flex justify-content-center align-items-center">
               {name}
-              <span className="ml-auto">
-                {status === 'active' ? (
-                  <>
-                    <Icons.StatusActive data-tip data-for="active" />
-                    <ReactTooltip id="active" place="top" effect="solid">
-                      Status Active
-                    </ReactTooltip>
-                  </>
-                ) : (
-                  <>
-                    <Icons.StatusNotActive data-tip data-for="not-active" />
-                    <ReactTooltip id="not-active" place="top" effect="solid">
-                      Status Not-Active
-                    </ReactTooltip>
-                  </>
-                )}
-              </span>
             </Card.Title>
+            <div className="ml-auto d-flex justify-content-center align-items-center">
+              {status === 'active' ? (
+                <>
+                  <Icons.StatusActive data-tip data-for="active" />
+                  <ReactTooltip id="active" place="top" effect="solid">
+                    Status Active
+                  </ReactTooltip>
+                </>
+              ) : (
+                <>
+                  <Icons.StatusNotActive data-tip data-for="not-active" />
+                  <ReactTooltip id="not-active" place="top" effect="solid">
+                    Status Not-Active
+                  </ReactTooltip>
+                </>
+              )}
+            </div>
           </CardHead>
           <Card.Body>
             <Card.Text className="d-flex align-items-center">
@@ -73,9 +64,9 @@ export default function CardComponent({
               <TextStyle className="ml-5">{totalPhotos}</TextStyle>
             </Card.Text>
           </Card.Body>
-          <Button variant="success" onClick={redirectToRoverPage}>
-            ENTER
-          </Button>
+          <Link to={{ pathname: `/mars-rovers/rover/${name.toString()}`, maxSol }}>
+            <Button variant="success">ENTER</Button>
+          </Link>
         </Card.Body>
       </Card>
     </Col>

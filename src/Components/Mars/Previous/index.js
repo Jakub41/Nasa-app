@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaLongArrowAltUp } from 'react-icons/fa';
+import { v4 as uuidv4 } from 'uuid';
 import { formatTemperature } from '../../../Helpers';
 import { PreviousWrapper, Toggle, PreviousDays, PreviousDay } from './styles';
 
@@ -25,7 +26,7 @@ const Previous = ({ weather, previous, metric, handleIsPrevious, handleSelectedS
       <h2 className="main-title previous-weather__title">Previous 7 days</h2>
       <PreviousDays>
         {weather.map((sol, i) => (
-          <PreviousDay key={sol.sol} previous={previous}>
+          <PreviousDay key={uuidv4()} previous={previous}>
             <h3 className="previous-day__sol">
               <span>{sol.sol}</span>
             </h3>

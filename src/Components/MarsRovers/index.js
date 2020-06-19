@@ -5,7 +5,7 @@ import { Jumbotron } from 'react-bootstrap';
 import RoversMain from './RoversMain';
 import { JumbotronWrapper } from './styles';
 
-export default function MarsRoversIndex({ rovers, redirect }) {
+export default function MarsRoversIndex({ rovers }) {
   return (
     <JumbotronWrapper>
       <Jumbotron className="jumbo-rovers">
@@ -20,7 +20,7 @@ export default function MarsRoversIndex({ rovers, redirect }) {
           distance driven by any off-Earth wheeled vehicle.
         </p>
       </Jumbotron>
-      <RoversMain rovers={rovers} redirect={redirect} />
+      <RoversMain rovers={rovers} />
     </JumbotronWrapper>
   );
 }

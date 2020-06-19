@@ -8,6 +8,7 @@ import RoversLoader from '../../Components/Loaders/RoversLoader';
 import { PromiseWithTimeout } from '../../Util/AutoTimeoutUnsubscriber';
 
 import MarsRovers from '../../Components/MarsRovers';
+import { savePhotosManifest } from '../../Components/MarsRovers/Rover/RoverCameras/PhotosDataFetch';
 
 export default class MarsRoversIndex extends Component {
   constructor(props) {
@@ -24,14 +25,16 @@ export default class MarsRoversIndex extends Component {
       await PromiseWithTimeout(
         [
           getRoverManifest('curiosity'),
-          getRoverManifest('spirit'),
           getRoverManifest('opportunity'),
+          getRoverManifest('spirit'),
         ],
         3000
       ).then(
         (rovers) => {
+          console.log('Rovers', rovers);
+          rovers.forEach(savePhotosManifest);
           if (rovers.some((rover) => rover.photo_manifest === undefined))
-            this.setState({ error: true });
+            this.setState({ error: true, isLoading: false });
 
           this.setState({
             isLoading: false,
@@ -40,12 +43,14 @@ export default class MarsRoversIndex extends Component {
         },
         (error) => {
           console.error('Error fetching Rover Manifests: ', error);
-          this.setState({ error: true });
+          this.setState({ error: true, isLoading: false });
         }
       );
-    } catch {
+    } catch (error) {
+      console.error('Error Mars Rover Page: ', error);
       this.setState({
         error: true,
+        isLoading: false,
       });
     }
   };
