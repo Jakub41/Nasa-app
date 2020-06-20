@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ImageWithHoverToFitGrid } from './styles';
+import { ImageWithHoverToFitGrid, RoverPhotosGrid } from './styles';
 import PulsingThreeDots from './PulsingThreeDots';
 import { hasPhotoInDB, readPhotoFromDB, savePhotoToDB } from './PhotosDB';
 import loadImageAsBase64String from './LoadImageAsBase64String';
@@ -11,19 +11,20 @@ export default function PhotoItem({ alt, photoId, src }) {
 
   useEffect(
     function onComponentRender() {
+      let isCancelled = true;
       setIsComponentMounted(true);
       setIsLoadingPhotoData(true);
       (async function synchronizeWithDatabase() {
         try {
-          const hasCurrentPhotoInDB = await hasPhotoInDB(photoId);
+          const hasCurrentPhotoInDB = await hasPhotoInDB(RoverPhotosGrid);
           if (hasCurrentPhotoInDB) {
             const photoFromDB = await readPhotoFromDB(photoId);
-            if (isComponentMounted) {
+            if (isComponentMounted && isCancelled) {
               setImageSrc(photoFromDB.srcInBase64);
             }
           } else {
             const imageSrcInBase64 = await loadImageAsBase64String(src);
-            if (isComponentMounted) {
+            if (isComponentMounted && isCancelled) {
               setImageSrc(imageSrcInBase64);
             }
             const photo = {
@@ -33,7 +34,7 @@ export default function PhotoItem({ alt, photoId, src }) {
             await savePhotoToDB(photo);
           }
         } catch {
-          if (isComponentMounted) {
+          if (isComponentMounted && isCancelled) {
             setImageSrc(src);
           }
         }
@@ -41,6 +42,7 @@ export default function PhotoItem({ alt, photoId, src }) {
 
       return function onComponentUnmount() {
         setIsComponentMounted(false);
+        isCancelled = false;
       };
     },
     [photoId, src, isComponentMounted]

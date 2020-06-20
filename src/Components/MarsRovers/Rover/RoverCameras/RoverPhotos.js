@@ -19,6 +19,7 @@ export default function RoverPhotos({ camera, roverName, setWholePageIsLoading }
 
   useEffect(() => {
     (() => {
+      let isCancelled = true;
       setIsComponentMounted(true);
       setIsFetchingPhotos(true);
       setHasError(false);
@@ -27,7 +28,7 @@ export default function RoverPhotos({ camera, roverName, setWholePageIsLoading }
           const hasChangedPhotoGallery =
             lastCameraShown !== camera || lastRoverNameShown !== roverName;
           if (activePageNumber !== 1 && hasChangedPhotoGallery) {
-            if (isComponentMounted) {
+            if (isComponentMounted && isCancelled) {
               setActivePageNumber(1);
             }
             return;
@@ -55,11 +56,11 @@ export default function RoverPhotos({ camera, roverName, setWholePageIsLoading }
           setWholePageIsLoading(false);
           setIsFetchingPhotos(false);
         } catch {
-          if (isComponentMounted) {
+          if (isComponentMounted && isCancelled) {
             setHasError(true);
           }
         } finally {
-          if (isComponentMounted) {
+          if (isComponentMounted && isCancelled) {
             setWholePageIsLoading(false);
             setIsFetchingPhotos(false);
           }
@@ -68,6 +69,7 @@ export default function RoverPhotos({ camera, roverName, setWholePageIsLoading }
 
       return function onComponentUnmount() {
         setIsComponentMounted(false);
+        isCancelled = false;
       };
     })();
   }, [camera, roverName, setWholePageIsLoading, activePageNumber, isComponentMounted]);
