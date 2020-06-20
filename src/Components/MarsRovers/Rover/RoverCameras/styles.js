@@ -48,74 +48,76 @@ export const RoverPhotosGrid = Styled.div`
   width: 100%;
   height: auto;
   margin: 0.5rem 0;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(2, 47%);
+  justify-content: space-between;
+  row-gap: 1rem;
+
+  @media only screen and (min-width: 500px) {
+    grid-template-columns: repeat(3, 30%);
+    row-gap: 0.8rem;
+  }
+
+  @media only screen and (min-width: 750px) {
+    grid-template-columns: repeat(4, 23%);
+    row-gap: 0.8rem;
+  }
+
+  @media only screen and (min-width: 1000px) {
+    grid-template-columns: repeat(5, 18.8%);
+    row-gap: 0.8rem;
+  }
+
+  @media only screen and (min-width: 1250px) {
+    grid-template-columns: repeat(6, 15.8%);
+    row-gap: 0.8rem;
+  }
 `;
 
-export const RoverPhotoItem = Styled.img`
-  width: 47.5%;
+export const ImageWithHoverToFitGrid = Styled.img`
+  width: 100%;
   min-height: 4rem;
   height: auto;
-  max-height: 47.5vw;
-  margin: 0.5rem 0;
-  margin-right: 5%;
+  max-height: 10rem;
   transition: transform 0.1s ease-in;
 
   &:hover {
     transform: scale(1.075);
   }
+`;
 
-  @media only screen and (max-width: 499px) {
-    &:nth-of-type(2n) {
-      margin-right: 0;
+export const PulsingDotsContainer = Styled.div`
+  margin: 0.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+`;
+
+export const PulsingDot = Styled.div`
+  width: 1.0rem;
+  height: 1.0rem;
+  margin: 0.25rem;
+  display: inline-block;
+  background-color: rgb(255,108,67);
+  border-radius: 50%;
+  animation: sizeOscilation 0.9s infinite linear;
+
+  &:first-of-type {
+    animation-delay: -0.2s;
+  }
+
+  &:last-of-type {
+    animation-delay: 0.2s;
+  }
+
+  @keyframes sizeOscilation {
+    0%, 100% {
+      transform: scale(0);
     }
-  }
-
-  @media only screen and (min-width: 500px) {
-    width: calc(90%/3);
-    max-height: calc(90vw/3);
-  }
-
-  @media only screen and (min-width: 500px) and (max-width: 749px) {
-    &:nth-of-type(3n) {
-      margin-right: 0;
-    }
-  }
-
-  @media only screen and (min-width: 750px) {
-    width: calc(92.5%/4);
-    max-height: calc(92.5vw/4);
-    margin-right: 2.5%;
-  }
-
-  @media only screen and (min-width: 750px) and (max-width: 999px) {
-    &:nth-of-type(4n) {
-      margin-right: 0;
-    }
-  }
-
-  @media only screen and (min-width: 1000px) {
-    width: calc(94%/5);
-    max-height: calc(94vw/5);
-    margin-right: 1.5%;
-  }
-
-  @media only screen and (min-width: 1000px) and (max-width: 1249px) {
-    &:nth-of-type(5n) {
-      margin-right: 0;
-    }
-  }
-
-  @media only screen and (min-width: 1250px) {
-    width: calc(95%/6);
-    max-height: calc(95vw/6);
-    margin-right: 1%;
-  }
-
-  @media only screen and (min-width: 1250px) {
-    &:nth-of-type(6n) {
-      margin-right: 0;
+    30% {
+      transform: scale(1);
     }
   }
 `;
@@ -149,6 +151,7 @@ export const Spinner = Styled.div`
   border-top-color: rgb(207, 49, 29);
   width: 3rem;
   height: 3rem;
+  margin: 10rem 0 20rem 0;
   border-radius: 50%;
   animation: spinner 0.9s infinite linear;
 

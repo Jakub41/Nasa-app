@@ -31,7 +31,6 @@ export default class MarsRoversIndex extends Component {
         3000
       ).then(
         (rovers) => {
-          console.log('Rovers', rovers);
           rovers.forEach(savePhotosManifest);
           if (rovers.some((rover) => rover.photo_manifest === undefined))
             this.setState({ error: true, isLoading: false });
@@ -83,28 +82,19 @@ MarsRoversIndex.defaultProps = {
     opportunity: {},
   },
 };
+
+const marsRoversIndexPropType = PropTypes.shape({
+  name: PropTypes.string,
+  landing_date: PropTypes.string,
+  launch_date: PropTypes.string,
+  max_date: PropTypes.string,
+  max_sol: PropTypes.number,
+});
+
 MarsRoversIndex.propTypes = {
   manifest: PropTypes.shape({
-    curiosity: PropTypes.shape({
-      name: PropTypes.string,
-      landing_date: PropTypes.string,
-      launch_date: PropTypes.string,
-      max_date: PropTypes.string,
-      max_sol: PropTypes.number,
-    }),
-    spirit: PropTypes.shape({
-      name: PropTypes.string,
-      landing_date: PropTypes.string,
-      launch_date: PropTypes.string,
-      max_date: PropTypes.string,
-      max_sol: PropTypes.number,
-    }),
-    opportunity: PropTypes.shape({
-      name: PropTypes.string,
-      landing_date: PropTypes.string,
-      launch_date: PropTypes.string,
-      max_date: PropTypes.string,
-      max_sol: PropTypes.number,
-    }),
+    curiosity: marsRoversIndexPropType,
+    spirit: marsRoversIndexPropType,
+    opportunity: marsRoversIndexPropType,
   }),
 };
